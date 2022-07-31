@@ -1,0 +1,18 @@
+package Character;
+
+public class Hero {
+	public String name = "hero1";  
+	
+//	public Hero(){
+//		name = "hero2";
+//	}
+	{
+		name = "hero3";
+	}
+	public static void main(String[] args) {
+			Hero h1 = new Hero();
+			System.out.println(h1.name);
+	}
+}
+
+

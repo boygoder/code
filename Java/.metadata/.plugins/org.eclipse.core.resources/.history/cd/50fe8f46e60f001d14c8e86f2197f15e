@@ -1,0 +1,9 @@
+package Character;
+
+public class IStringBuffer {
+
+	public IStringBuffer() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

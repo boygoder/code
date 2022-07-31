@@ -1,0 +1,23 @@
+package digit;
+
+public class TestStringBuffer {
+
+	public TestStringBuffer() {
+		// TODO Auto-generated constructor stub
+		main();
+	}
+
+	public static void main(String args[]) {
+		String str = "StringBuffer";
+		StringBuffer strbuf = new StringBuffer(str);
+		strbuf.append(" append");
+		System.out.println(strbuf);
+		strbuf.delete(4,5);
+		System.out.println(strbuf);
+		strbuf.insert(4,'g');
+		System.out.println(strbuf);
+		strbuf.reverse();
+		System.out.println(strbuf);
+	}
+
+}

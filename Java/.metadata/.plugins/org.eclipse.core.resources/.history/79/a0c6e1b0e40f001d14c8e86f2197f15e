@@ -1,0 +1,19 @@
+package digit;
+
+public class TestStringBuffer {
+
+	public TestStringBuffer() {
+		// TODO Auto-generated constructor stub
+		String str = "StringBuffer";
+		StringBuffer strbuf = new StringBuffer(str);
+		strbuf.append(" append");
+		System.out.println(str);
+		strbuf.delete(4,5);
+		System.out.println(str);
+		strbuf.insert(4,'g');
+		System.out.println(str);
+		strbuf.reverse();
+		System.out.println(str);
+	}
+
+}

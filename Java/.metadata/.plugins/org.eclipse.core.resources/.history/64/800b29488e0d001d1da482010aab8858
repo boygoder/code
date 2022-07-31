@@ -1,0 +1,15 @@
+package com.ClassAndObject;
+
+public class Armor  extends Item{
+	int grade_;
+	public Armor() {};
+	public  Armor(String name,int price,int grade)
+	{
+		super(name,price);
+		grade_ = grade;
+	}
+	public static void main(String[] args) {
+		Armor a1 = new Armor("皇麟宝甲",1000,5);
+		System.out.println();
+	}
+}

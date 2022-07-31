@@ -1,0 +1,9 @@
+package digit;
+
+public class TestStringBuffer {
+
+	public TestStringBuffer() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

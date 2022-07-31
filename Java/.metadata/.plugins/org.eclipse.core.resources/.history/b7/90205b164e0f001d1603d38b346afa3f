@@ -1,0 +1,14 @@
+package ClassPractice;
+
+public class Cat {
+
+	public Cat() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

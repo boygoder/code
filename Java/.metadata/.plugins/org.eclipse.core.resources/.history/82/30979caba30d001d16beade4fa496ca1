@@ -1,0 +1,85 @@
+package com.ClassAndObject;
+
+import javax.security.auth.AuthPermission;
+import javax.security.auth.callback.NameCallback;
+
+public class Hero {
+	public String name;
+	public float hp;
+	float armor;
+	int moveSpeed;
+	int death;
+	int kills;
+	int assists;
+	int money;
+	String deathWords;
+	String killWords;
+	public Hero() {};
+	public Hero(
+		String heroName,
+		float heroHP,
+		float heroArmor,
+		int heroMoveSpeed)
+	{
+		name = heroName;
+		hp = heroHP;
+		
+	}
+	float getHp() {
+		// TODO Auto-generated method stub
+		return hp;
+	}
+	void addSpeed(double speed)
+	{
+		moveSpeed += speed; 
+	}
+	void legendary()
+	{
+		System.out.println(this.name + ":legendary");
+	}
+	void recovery(float blood)
+	{
+		System.out.println("before:"+this.hp);
+		hp+=blood;
+		System.out.println("after:"+this.hp);
+	}
+	public void attack(Hero hero)
+	{
+		System.out.println(name+"攻击了"+hero.name);
+	}
+	public void attack(Hero ...heros)
+	{
+		for (Hero hero : heros) {
+			System.out.println(name+"同时攻击了"+hero.name);
+		}
+	}
+	public void heal(Hero hero,float hp)
+	{
+		hero.hp+=hp;
+		System.out.println(name+"治疗了"+hero.name+hp+"血量");
+	}
+	private void heal(float hp,Hero ...heros) {
+		// TODO Auto-generated method stub
+		for (Hero hero : heros) {
+			hero.hp+=hp;
+			System.out.println(name+"同时治疗了"+hero.name+hp+"血量");
+		}
+	}
+		public static void main(String[] args) {
+			Hero Gailun = new Hero();
+			Gailun.name = "盖伦";
+			Gailun.hp = 2000;
+			Hero Teemo = new Hero();
+			Hero db = new Hero();
+			Teemo.name = "提莫";
+			Teemo.hp = 1000;
+			db.name = "死哥";
+			Teemo.hp = 2000;
+			
+			Gailun.attack(Teemo,db);
+			
+			Gailun.heal(Teemo, 100);
+			Gailun.heal(100, Teemo,db);
+			
+	}
+}

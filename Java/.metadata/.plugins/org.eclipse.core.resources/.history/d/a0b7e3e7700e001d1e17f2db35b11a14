@@ -1,0 +1,14 @@
+package Character;
+
+public class ADHero   extends Hero implements AD {
+		public String getName() {
+			return this.name;
+		}
+
+		@Override
+		public void physicalAttack() {
+			// TODO Auto-generated method stub
+			System.out.println("");
+		}
+		
+}

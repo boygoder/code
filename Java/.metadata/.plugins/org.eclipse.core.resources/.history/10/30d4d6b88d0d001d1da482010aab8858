@@ -1,0 +1,12 @@
+package com.ClassAndObject;
+
+public class Weapon extends Item{
+	int damage;
+	public static void main(String[] args) {
+		Weapon w1 = new Weapon();
+		w1.damage=65;
+		w1.name="破甲弓";
+		w1.price = 500;
+		System.out.println("name:"+w1.name+" price: "+w1.price+" damage:" + w1.damage);
+	}
+}

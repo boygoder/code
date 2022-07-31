@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+    <libraryInfo home="D:\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416\jre" version="17.0.3"/>
+    <libraryInfo home="D:\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.3.v20220515-1416" version="17.0.3"/>
+    <libraryInfo home="D:\Java\jdk-17.0.3.1" version="17.0.3.1"/>
+    <libraryInfo home="D:\Java\jdk8" version="1.8.0_65">
+        <bootpath>
+            <entry path="D:\Java\jdk8\jre\lib\resources.jar"/>
+            <entry path="D:\Java\jdk8\jre\lib\rt.jar"/>
+            <entry path="D:\Java\jdk8\jre\lib\sunrsasign.jar"/>
+            <entry path="D:\Java\jdk8\jre\lib\jsse.jar"/>
+            <entry path="D:\Java\jdk8\jre\lib\jce.jar"/>
+            <entry path="D:\Java\jdk8\jre\lib\charsets.jar"/>
+            <entry path="D:\Java\jdk8\jre\lib\jfr.jar"/>
+            <entry path="D:\Java\jdk8\jre\classes"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="D:\Java\jdk8\jre\lib\ext"/>
+            <entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="D:\Java\jdk8\jre\lib\endorsed"/>
+        </endorsedDirs>
+    </libraryInfo>
+</libraryInfos>

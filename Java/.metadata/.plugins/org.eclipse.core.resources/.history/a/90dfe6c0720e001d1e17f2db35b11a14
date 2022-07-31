@@ -1,0 +1,5 @@
+package Character;
+
+public interface AP {
+	public void magicalAttack();//声明
+}

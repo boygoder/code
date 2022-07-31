@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.security.auth.callback.NameCallback"/>
+    <fullyQualifiedTypeName name="javax.security.auth.AuthPermission"/>
+    <fullyQualifiedTypeName name="com.example.Hero"/>
+    <fullyQualifiedTypeName name="com.ClassAndObject.Hero"/>
+    <fullyQualifiedTypeName name="Character.GiantDragon"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="property.Item"/>
+    <fullyQualifiedTypeName name="property.LifePortion"/>
+    <fullyQualifiedTypeName name="property.MagicPortion"/>
+    <fullyQualifiedTypeName name="Character.Hero"/>
+    <fullyQualifiedTypeName name="Character.ADAPHero"/>
+    <fullyQualifiedTypeName name="java.util.Locale"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.Character"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
+</qualifiedTypeNameHistroy>

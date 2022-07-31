@@ -1,0 +1,6 @@
+package ClassPractice;
+
+public abstract class Animal {
+	protected int legs;
+	
+}

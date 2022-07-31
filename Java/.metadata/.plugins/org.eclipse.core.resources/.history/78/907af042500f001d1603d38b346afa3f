@@ -1,0 +1,16 @@
+package ClassPractice;
+
+public class Fish extends Animal implements Pet{
+
+	public Fish() {
+		// TODO Auto-generated constructor stub
+		super(0);
+	}
+
+	@Override
+	public void eat() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

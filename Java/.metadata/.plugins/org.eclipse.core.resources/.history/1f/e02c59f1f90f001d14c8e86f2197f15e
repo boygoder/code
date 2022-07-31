@@ -1,0 +1,16 @@
+package digit;
+
+import java.util.Date;
+
+public class TestDate {
+
+	public TestDate() {
+		// TODO Auto-generated constructor stub
+	}
+	public static void main(String[] args) {
+		@SuppressWarnings("deprecation")
+		Date d1 = new Date(95,1,1,0,0,0);
+		Date d2 = new Date(95,12,31,23,59,59);
+		System.out.println(d2.getTime()-d1.getTime());
+	}
+}

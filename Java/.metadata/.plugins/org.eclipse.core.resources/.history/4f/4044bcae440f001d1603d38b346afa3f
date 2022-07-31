@@ -1,0 +1,12 @@
+package property;
+
+public class MagicPortion {
+	public void effect() {
+		// TODO Auto-generated method stub
+		System.out.println("效果：回蓝");
+	}
+	public static void main(String[] args) {
+		MagicPortion m = new MagicPortion();
+		m.effect();
+	}
+}

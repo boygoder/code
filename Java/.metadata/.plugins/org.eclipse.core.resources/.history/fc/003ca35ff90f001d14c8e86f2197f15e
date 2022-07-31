@@ -1,0 +1,9 @@
+package digit;
+
+public class TestDate {
+
+	public TestDate() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

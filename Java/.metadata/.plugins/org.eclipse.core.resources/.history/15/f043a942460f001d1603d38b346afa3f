@@ -1,0 +1,77 @@
+package Character;
+
+import property.Item;
+
+public abstract class Hero {
+	public String name= "hero1";  
+	public float hp=1000;
+	float armor=0;
+	int moveSpeed=400;
+	int money=200;
+	
+    // 非静态内部类，只有一个外部类对象存在的时候，才有意义
+    // 战斗成绩只有在一个英雄对象存在的时候才有意义
+    class BattleScore {
+        int kill;
+        int die;
+        int assit;
+ 
+        public void legendary() {
+            if (kill >= 8)
+                System.out.println(name + "超神！");
+            else
+                System.out.println(name + "尚未超神！");
+        }
+    }
+ 
+	public Hero(){
+		System.out.println("Hero的构造方法");
+	}
+    public Hero(String name){
+        System.out.println("Hero的有一个参数的构造方法 ");
+        this.name = name;
+    }
+	public Hero(String name,float hp)
+	{
+		this.name = name;
+		this.hp = hp;
+	}
+	public Hero(
+		String name,
+		float hp,
+		float armor,
+		int moveSpeed)
+	{
+		this(name,hp);
+		this.armor = armor;
+		this.moveSpeed = moveSpeed;
+		System.out.println("name: "+name+" hp: "+hp + " armor: "+armor + "moveSpeed: " + moveSpeed);
+	}
+	@Override
+	public String toString()
+	{
+		return this.name;
+	}
+	@Override
+	public void finalize()
+	{
+		System.out.println("正在回收……");
+	}
+	public void useItem(Item i)
+	{
+		System.out.println("hero use item");
+		i.effect();
+	}
+	public void kill(Mortal m)
+	{
+		System.out.print("击杀者：Hero ");
+		m.die();
+	}
+	public abstract void attack(Hero h);
+	public static void main(String[] args) {
+        
+        
+	}
+}
+
+

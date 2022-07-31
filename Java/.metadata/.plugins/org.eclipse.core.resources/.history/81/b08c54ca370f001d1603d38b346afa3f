@@ -1,0 +1,61 @@
+package Character;
+
+import property.Item;
+
+public class ADHero   extends Hero implements AD,Mortal {
+	int moveSpeed = 100;
+	public ADHero() 
+	{
+		System.out.println("ADHero的构造方法");
+	};
+	public ADHero(String name)
+	{
+		super(name);
+		System.out.println("ADHero的有一个参数的构造方法");
+	}
+	public ADHero(String name,float hp)
+	{
+		super(name,hp);
+	}
+	public int getMoveSpeed()
+	{
+		return this.moveSpeed;
+	}
+	public int getSuperMoveSpeed()
+	{
+		return super.moveSpeed;
+	}
+	public void useItem(Item i)
+	{
+	    System.out.println("adhero use item");
+	    super.useItem(i);
+	}
+
+	@Override
+	public  void kill(Mortal m) {
+		// TODO Auto-generated method stub
+		System.out.println("击杀者：ADHero ");
+		m.die();
+	}
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		System.out.println("物理英雄"+this.name+"死去");
+	}
+		
+		public String getName() {
+			return this.name;
+		}
+
+		@Override
+		public void physicalAttack() {
+			// TODO Auto-generated method stub
+			System.out.println("坚如磐石");
+		}
+		public static void main(String[] args) {
+	        ADHero ad = new ADHero();
+	        ADHero ad1 = new ADHero("GaRON");
+	        System.out.println("this:"+ad1.getMoveSpeed());
+	        System.out.println("super:"+ad1.getSuperMoveSpeed());
+		}
+}

@@ -1,0 +1,83 @@
+package digit;
+
+public class TestNumber {
+
+	public TestNumber() {
+		// TODO Auto-generated constructor stub
+	}
+	public static void main(String[] args) {
+		String password = getString(3);
+		String crack = crackPass(password,3);
+    }
+	private static String crackPass(String pass,int length)
+	{
+		if(length==0)
+		{
+			return "";
+		}
+		else
+		{
+			String prevous = crackPass(pass,length-1);
+			for(int i=48; i < 122;i++)
+			{
+				char c = (char)i;
+				if(c == pass.charAt(length-1))
+				{
+					prevous+=c;
+				}
+			}
+		}
+	}
+	private static void sortString() {
+		String[] str = new String[8];
+		for(int i=0; i< str.length;i++)
+		{
+			str[i] = getString();
+		}
+		for(int i=0; i < str.length;i++)
+		{
+			System.out.print(" "+str[i]);
+		}
+		System.out.println();
+		for(int i=0; i < str.length-1;i++)
+		{
+			for(int j = 0;  j < str.length -i-1; j++)
+			{
+				char  c1 = Character.toUpperCase(str[j].charAt(0));
+				char c2 = Character.toUpperCase(str[j+1].charAt(0));
+				if(c1 > c2)
+				{
+					String tmp = str[j];
+					str[j] = str[j+1];
+					str[j+1] = tmp;
+				}
+			}
+		}
+		for(int i=0; i < str.length;i++)
+		{
+			System.out.print(" "+str[i]);
+		}
+	}
+	private static String getString(int length) {
+		char[] randomChar = new char[length];
+		for(int i=0; i < randomChar.length;i++){
+			int random1 = (int) (3*Math.random());
+			System.out.println(random1);
+			if(random1 ==0)
+			{
+				randomChar[i] =  (char) ((int)'0' + (int)(10 * Math.random()));
+			}
+			else if(random1==1)
+			{
+				randomChar[i] =  (char) ((int)'a' + (int)(26 * Math.random()));
+			}
+			else if(random1==2)
+			{
+				randomChar[i] =  (char) ((int)'A' + (int)(26 * Math.random()));
+			}
+		}
+		String str = new String(randomChar);
+//		System.out.println(str);
+		return str;
+	}
+}

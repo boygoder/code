@@ -1,0 +1,5 @@
+package Character;
+
+public class APHero extends Hero implements AP {
+	
+}

@@ -1,0 +1,9 @@
+package ClassPractice;
+
+public class Fish {
+
+	public Fish() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

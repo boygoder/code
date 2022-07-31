@@ -1,0 +1,9 @@
+package Character;
+
+public class MyStringBuffer {
+
+	public MyStringBuffer() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,64 @@
+package Character;
+
+import property.Item;
+
+public class Hero {
+	public String name= "hero1";  
+	public float hp=1000;
+	float armor=0;
+	int moveSpeed=400;
+	int death=0;
+	int kills=0;
+	int assists=0;
+	int money=200;
+	public Hero(){
+		System.out.println("Hero的构造方法");
+	}
+    public Hero(String name){
+        System.out.println("Hero的有一个参数的构造方法 ");
+        this.name = name;
+    }
+	public Hero(String name,float hp)
+	{
+		this.name = name;
+		this.hp = hp;
+	}
+	public Hero(
+		String name,
+		float hp,
+		float armor,
+		int moveSpeed)
+	{
+		this(name,hp);
+		this.armor = armor;
+		this.moveSpeed = moveSpeed;
+		System.out.println("name: "+name+" hp: "+hp + " armor: "+armor + "moveSpeed: " + moveSpeed);
+	}
+	public String toString()
+	{
+		return this.name;
+	}
+	public void useItem(Item i)
+	{
+		System.out.println("hero use item");
+		i.effect();
+	}
+	public void kill(Mortal m)
+	{
+		System.out.print("击杀者：Hero ");
+		m.die();
+	}
+	public static void main(String[] args) {
+			Hero h = new ADHero("盖伦",1000);
+			System.out.println(h.toString());
+//			ADHero adh =  new ADHero("ad",2000);
+//			APHero aph = new APHero("ap",800);
+//			ADAPHero adaph =  new ADAPHero("adap",1200);
+//			h.kill(adh);
+//			h.kill(aph);
+//			h.kill(adaph);
+//			
+	}
+}
+
+

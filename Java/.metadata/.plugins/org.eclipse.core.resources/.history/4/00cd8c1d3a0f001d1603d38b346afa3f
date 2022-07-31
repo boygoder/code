@@ -1,0 +1,71 @@
+package Character;
+
+import property.Item;
+
+public class Hero {
+	public String name= "hero1";  
+	public float hp=1000;
+	float armor=0;
+	int moveSpeed=400;
+	int death=0;
+	int kills=0;
+	int assists=0;
+	int money=200;
+	public Hero(){
+		System.out.println("Hero的构造方法");
+	}
+    public Hero(String name){
+        System.out.println("Hero的有一个参数的构造方法 ");
+        this.name = name;
+    }
+	public Hero(String name,float hp)
+	{
+		this.name = name;
+		this.hp = hp;
+	}
+	public Hero(
+		String name,
+		float hp,
+		float armor,
+		int moveSpeed)
+	{
+		this(name,hp);
+		this.armor = armor;
+		this.moveSpeed = moveSpeed;
+		System.out.println("name: "+name+" hp: "+hp + " armor: "+armor + "moveSpeed: " + moveSpeed);
+	}
+	@Override
+	public String toString()
+	{
+		return this.name;
+	}
+	@Override
+	public void finalize()
+	{
+		System.out.println("正在回收……");
+	}
+	public void useItem(Item i)
+	{
+		System.out.println("hero use item");
+		i.effect();
+	}
+	public void kill(Mortal m)
+	{
+		System.out.print("击杀者：Hero ");
+		m.die();
+	}
+	public static void main(String[] args) {
+        Hero h;
+        for (int i = 0; i < 100000; i++) {
+            //不断生成新的对象
+            //每创建一个对象，前一个对象，就没有引用指向了
+            //那些对象，就满足垃圾回收的条件
+            //当，垃圾堆积的比较多的时候，就会触发垃圾回收
+            //一旦这个对象被回收，它的finalize()方法就会被调用
+            h = new Hero();
+        }
+//			
+	}
+}
+
+

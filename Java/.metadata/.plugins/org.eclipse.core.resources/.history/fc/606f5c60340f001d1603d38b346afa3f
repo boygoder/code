@@ -1,0 +1,31 @@
+package Character;
+
+public class ADHero   extends Hero implements AD,Mortal {
+
+	public ADHero(String name,float hp)
+	{
+		super(name,hp);
+	}
+	
+	@Override
+	public void die() {
+		// TODO Auto-generated method stub
+		System.out.println("物理英雄"+this.name+"死去");
+	}
+		
+		public String getName() {
+			return this.name;
+		}
+
+		@Override
+		public void physicalAttack() {
+			// TODO Auto-generated method stub
+			System.out.println("坚如磐石");
+		}
+		public static void main(String[] args) {
+	        ADHero ad = new ADHero();
+	        Hero h = ad;
+	        AD adi = (AD) h;
+	        APHero ap = (APHero) adi;
+		}
+}
