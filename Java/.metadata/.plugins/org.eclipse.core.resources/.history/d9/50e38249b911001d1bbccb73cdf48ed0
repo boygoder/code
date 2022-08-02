@@ -1,0 +1,23 @@
+package com.example;
+
+
+public class DListNode{
+    private Object item_;
+    private DListNode next_;
+    private DListNode prevous_;
+    public DListNode()
+    {
+    	this.next_ = null;
+    	this.prevous_ = null;
+    	this.item_ = null;
+    }
+    public DListNode(Object item,DListNode next,DListNode prevous)
+    {
+    	this.item_ = item;
+    	this.prevous_ = prevous;
+    	this.next_ = next;
+    }
+    public static void main(String[] args) {
+        DListNode sentinel =  new DListNode(null,sentinel,sentinel);
+    }
+}

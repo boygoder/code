@@ -1,0 +1,13 @@
+package com.example;
+
+
+public class DListNode{
+    Object item;
+    DListNode next;
+    DListNode prevous;
+    public static void main(String[] args) {
+        DListNode sentinel =  new DListNode();
+        sentinel.next = sentinel;
+        sentinel.prevous = sentinel;
+    }
+}

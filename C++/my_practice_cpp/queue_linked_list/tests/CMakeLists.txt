@@ -1,0 +1,5 @@
+project(queue_llist_tests)
+
+add_executable(queue_llist_tests queue_llist_tests.cc)
+
+target_link_libraries(queue_llist_tests queue_llist_lib)

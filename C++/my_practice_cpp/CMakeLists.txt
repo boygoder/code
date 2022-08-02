@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.5)
+
+add_subdirectory(arrays)
+add_subdirectory(linked_lists)
+add_subdirectory(queue_array)
+add_subdirectory(queue_linked_list)
+add_subdirectory(hash_table)
+add_subdirectory(binary_search_tree)
+add_subdirectory(priority_queue)
+add_subdirectory(merge_sort)
+add_subdirectory(quick_sort)
+add_subdirectory(graphs)
