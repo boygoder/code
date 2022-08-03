@@ -1,4 +1,6 @@
-#include <iostream>
+#ifndef SHR_SINGLELINKEDLIST_
+#define SHR_SINGLELINKEDLIST_
+
 #include "ListNode.h"
 template <typename T>
 class SingleLinkedList
@@ -263,3 +265,5 @@ public:
         }
     }
 };
+
+#endif //SHR_SINGLELINKEDLIST_

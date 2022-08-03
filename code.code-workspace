@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "..\\课程资料\\代码相关\\Courses"
 		}
 	],
 	"settings": {

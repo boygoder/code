@@ -1,3 +1,6 @@
+#ifndef SHR_LISTNODE_
+#define SHR_LISTNODE_
+
 #include <iostream>
 #include <memory>
 
@@ -47,3 +50,4 @@ public:
 
     }
 };
+#endif //SHR_LISTNODE_
