@@ -1,8 +1,0 @@
-package com.ClassAndObject;
-
-public class Weapon extends Item{
-	int damage;
-	public static void main(String[] args) {
-		
-	}
-}

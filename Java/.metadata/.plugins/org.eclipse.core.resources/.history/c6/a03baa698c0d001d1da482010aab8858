@@ -1,5 +1,0 @@
-package com.ClassAndObject;
-
-public class Weapon extends Item{
-	
-}

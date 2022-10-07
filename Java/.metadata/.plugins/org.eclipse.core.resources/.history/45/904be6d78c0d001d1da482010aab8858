@@ -1,8 +1,0 @@
-package com.ClassAndObject;
-
-public class Armor {
-	int grade;
-	public static void main(String[] args) {
-		
-	}
-}

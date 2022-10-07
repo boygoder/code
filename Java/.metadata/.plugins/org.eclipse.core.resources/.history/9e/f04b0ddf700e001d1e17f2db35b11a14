@@ -1,8 +1,0 @@
-package Character;
-
-public class ADHero extends Hero {
-		public String getName() {
-			return this.name;
-		}
-		
-}

@@ -1,8 +1,0 @@
-package com.ClassAndObject;
-
-public class New {
-	public int num;
-	public static void main(String[] args) {
-		
-	}
-}

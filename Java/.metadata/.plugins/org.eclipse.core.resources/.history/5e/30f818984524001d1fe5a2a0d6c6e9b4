@@ -1,0 +1,24 @@
+package exception;
+
+public class Account {
+	protected double balance;
+	
+	public Account(double _balance) {
+		// TODO Auto-generated constructor stub
+		balance = _balance;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void deposit(double a) {
+		balance +=a;
+	}
+	public void withdraw(double s) throws Exception{
+		double deficit = balance - s;
+		if(deficit < 0) {
+			throw new OverdrafException("账户余额不足", deficit);
+		}
+	}
+	
+
+}

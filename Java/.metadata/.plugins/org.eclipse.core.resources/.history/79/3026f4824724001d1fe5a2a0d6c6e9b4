@@ -1,0 +1,15 @@
+package exception;
+
+public class CheckingAccount extends Account {
+	private double OverdraftProtection;
+	public CheckingAccount(double balance) {
+		// TODO Auto-generated constructor stub
+		super(balance);
+	}
+	public CheckingAccount(double balance, double protect) {
+		super(balance);
+		OverdraftProtection = protect;
+	}
+	
+
+}

@@ -1,0 +1,9 @@
+package exception;
+
+public class OverdrafException {
+
+	public OverdrafException() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

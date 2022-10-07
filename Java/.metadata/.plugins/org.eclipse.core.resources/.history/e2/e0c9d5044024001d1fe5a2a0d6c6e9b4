@@ -1,0 +1,9 @@
+package exception;
+
+public class EnemyHeroIsDeadException {
+
+	public EnemyHeroIsDeadException() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

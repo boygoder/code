@@ -1,0 +1,11 @@
+package exception;
+
+public class OverdrafException {
+	private double deficit;
+	public OverdrafException(String message, double deficit) {
+		// TODO Auto-generated constructor stub
+	}
+	public double getDeficit() {
+		return deficit;
+	}
+}

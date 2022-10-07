@@ -1,0 +1,16 @@
+package exception;
+
+public class Account {
+	private double balance;
+	
+	public Account(double _balance) {
+		// TODO Auto-generated constructor stub
+		balance = _balance;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	
+	
+
+}

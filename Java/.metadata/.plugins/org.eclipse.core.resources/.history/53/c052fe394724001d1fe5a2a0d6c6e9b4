@@ -1,0 +1,11 @@
+package exception;
+
+public class CheckingAccount extends Account {
+
+	public CheckingAccount(double balance) {
+		// TODO Auto-generated constructor stub
+		super(balance);
+	}
+	
+
+}

@@ -1,5 +1,6 @@
 package Character;
 
+import exception.EnemyHeroIsDeadException;
 import property.Item;
 
 public abstract class Hero {
@@ -38,7 +39,7 @@ public abstract class Hero {
                 Hero.battleWin();
                  
                 //静态内部类不能直接访问外部类的对象属性
-                System.out.println(name + " win this game");
+                System.out.println( " win this game");
             }
         }
     }
@@ -46,7 +47,6 @@ public abstract class Hero {
      
 
      
-    
 	public Hero(){
 		System.out.println("Hero的构造方法");
 	}
@@ -80,20 +80,25 @@ public abstract class Hero {
 	{
 		System.out.println("正在回收……");
 	}
-	public void useItem(Item i)
-	{
-		System.out.println("hero use item");
-		i.effect();
-	}
+//	public void useItem(LifePortion i)
+//	{
+//		System.out.println("hero use item");
+//		i.effect();
+//	}
 	public void kill(Mortal m)
 	{
 		System.out.print("击杀者：Hero ");
 		m.die();
 	}
 	public abstract void attack(Hero h);
+    public void attackHero(Hero h) throws EnemyHeroIsDeadException{
+        if(h.hp == 0){
+            throw new EnemyHeroIsDeadException(h.name + " 已经挂了,不需要施放技能" );
+        }
+    }
 	
-	
-	public static void main(String[] args) {
+    
+	public static void main2(String[] args) {
         
         ADHero Garon =  new ADHero("Garon");
         BattleScore score = Garon.new BattleScore();

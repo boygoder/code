@@ -1,0 +1,12 @@
+package exception;
+
+public class OverdrafException extends Exception{
+	private double deficit;
+	public OverdrafException(String message, double deficit) {
+		// TODO Auto-generated constructor stub
+		super(message);
+	}
+	public double getDeficit() {
+		return deficit;
+	}
+}

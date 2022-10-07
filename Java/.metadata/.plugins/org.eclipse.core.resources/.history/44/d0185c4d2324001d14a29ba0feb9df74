@@ -1,0 +1,9 @@
+package exception;
+
+public class TestException {
+
+	public TestException() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

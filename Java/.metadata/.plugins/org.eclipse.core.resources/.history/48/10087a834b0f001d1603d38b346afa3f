@@ -1,6 +1,0 @@
-package Character;
-
-public interface AD {
-	public void physicalAttack();//声明
-}
-

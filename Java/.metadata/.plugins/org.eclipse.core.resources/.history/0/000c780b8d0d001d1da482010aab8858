@@ -1,9 +1,0 @@
-package com.ClassAndObject;
-
-public class Armor  extends Item{
-	int grade;
-	public static void Armor(i)
-	public static void main(String[] args) {
-		Armor a1 = new Armor();
-	}
-}
