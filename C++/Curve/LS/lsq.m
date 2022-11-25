@@ -6,7 +6,7 @@ function [] = lsq(file_path,file_name,file_ext)
     if ndims(Gray) == 3
         Gray = rgb2gray(Gray);
     end
-    figure(1),imshow(Gray) %将图像显示出来
+    %figure(1),imshow(Gray) %将图像显示出来
     Image = im2double(Gray);%将图片的数据类型从unit8变为double型
     %=====输入源图像大小
     [image_y_max, image_x_max] =  size(Image);
@@ -28,10 +28,10 @@ function [] = lsq(file_path,file_name,file_ext)
             end
         end
     end
-    figure(2),imshow(Image)
+    %figure(2),imshow(Image)
 
 
-    %对图片进行裁剪
+    %对图片进行裁剪，只取包含曲线的部分
     min_x = 1;
     max_x = 1;
     min_y = 1;
@@ -53,13 +53,13 @@ function [] = lsq(file_path,file_name,file_ext)
     sum_row = sum(Image,2);
     for i = 1 : image_y_max
         if (sum_row(i) ~= 0)
-            %max_y = - i + image_y_max + 1;
+            min_y = i;
             break;
         end
     end
     for i = image_y_max : -1 : min_y + 1
         if (sum_row(i) ~= 0)
-            %min_y = - i + image_y_max + 1;
+            max_y = i;
             break;
         end
     end
@@ -70,13 +70,22 @@ function [] = lsq(file_path,file_name,file_ext)
     fprintf('裁剪后长度:%d，裁剪后宽度:%d\n',image_y_max,image_x_max);
     figure(3),imshow(Image);
 
-    %根据每列的和判断是否有交点，我们希望截取一段无交点部分
+    %根据每列的和判断是否有交点，我们希望截取一段无交点部分(最长的部分)
     count = zeros(image_x_max,1);
     for i =  1 : image_x_max
         count(i) = sum(Image(:,i)~=0);
     end
+    %判断有几条曲线，选择能够提供充分样点的最大曲线。（抛弃那些孤儿点）
     num_curve = max(count);
-
+    num_curve_cut = find(count == num_curve);
+    length = size(num_curve_cut);
+    min_length = round(image_x_max/4);
+    while (length < min_length)
+        count(num_curve_cut) = 0;
+        num_curve = num_curve - 1;
+        num_curve_cut = find(count == num_curve);
+        length = size(num_curve_cut);
+    end
 
     length = 1;
     i = 1;
@@ -85,7 +94,7 @@ function [] = lsq(file_path,file_name,file_ext)
     end
     share_index = i;
     for j = i+1 : image_x_max
-        while ( j < image_x_max) && ( count(j) == num_curve)
+        while ( j <= image_x_max) && ( count(j) == num_curve)
             j = j + 1;
         end
         sublength = j - i;
@@ -94,13 +103,13 @@ function [] = lsq(file_path,file_name,file_ext)
             share_index = i;
         end
         i = j + 1;
-        while (i < image_x_max) && ( count(i) ~= num_curve )
+        while (i <= image_x_max) && ( count(i) ~= num_curve )
             i = i + 1;
         end
         j = i + 1;
     end
 
-fprintf('截取起点：%d, 截取长度：%d\n',share_index,length);
+    fprintf('截取起点：%d, 截取长度：%d\n',share_index,length);
 
 
 
@@ -120,11 +129,12 @@ fprintf('截取起点：%d, 截取长度：%d\n',share_index,length);
     % figure,imshow(Image_cut);
     % [imagecut_y_max,imagecut_x_max] = size(Image_cut);
 
-    Image_cut  = Image( : , share_index : share_index + length);
-    % figure(4),imshow(Image_cut);
+       %注意此处，share_index + length -1 才是终点，不然会多取一个
+    Image_cut  = Image( : , share_index : share_index + length - 1);
+    %figure(4),imshow(Image_cut);
     [imagecut_y_max,imagecut_x_max] = size(Image_cut);
 
-    %截取
+    %截取初始用来回归的点
     Curves = zeros(imagecut_x_max,2,num_curve);
     for x =  1 : imagecut_x_max
         curve_id = 0;
@@ -162,9 +172,9 @@ fprintf('截取起点：%d, 截取长度：%d\n',share_index,length);
     % end
 
 
-    parameter = CalculateParameter(Image,parameter_origin,num_curve,10);
-
-    figure(4),imshow(Image),hold on
+    parameter = CalculateParameter(Image,Curves,parameter_origin,num_curve,3);
+    %parameter  = parameter_origin;
+    figure(5),imshow(Image),hold on
     for id  =  1 : num_curve
         t = parameter(id,:);
         x_fit = zeros(image_x_max,1);
@@ -178,7 +188,7 @@ fprintf('截取起点：%d, 截取长度：%d\n',share_index,length);
         hold on
     end
     
-    fig= strcat(file_path,file_name,'_fit');
+    fig= strcat(file_path,file_name,'_fit3');
     print('-dpng' , '-r200' , fig);
     para_save = strcat('./parameter/',file_name,'_parameter.txt');
     para = fopen(para_save,'wt');

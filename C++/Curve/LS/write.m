@@ -5,7 +5,7 @@
 % image(d); colormap(gray(8));
 % figure(1),imshow(d);
 
-    rotI  = imread('3.bmp');
+    rotI  = imread('./figure/3.png');
     BW = edge(rotI,'sobel');%sobel
     [H,T,R] = hough(BW,'Theta',-90:1:89,'Rho',1);
     imshow(H,[],'XData',T,'YData',R,'InitialMagnification','fit');
