@@ -1,4 +1,4 @@
-function parameter = CalculateParameter(Image,Curves_origin,parameter_origin,num_curve,iterate_time)
+function [parameter,CurvesFinal] = CalculateParameter(Image,Curves_origin,parameter_origin,num_curve,iterate_time)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
     [image_y_max,image_x_max] = size(Image);
@@ -95,7 +95,6 @@ function parameter = CalculateParameter(Image,Curves_origin,parameter_origin,num
 
             fun = @(t)( t(1)*cosh( (curve_x-t(2))./t(1) ) + t(3) - curve_y);
             parameter_initial = [image_y_max,image_x_max,-image_y_max];                              % 待辨识参数的初值
-            %parameter_initial = [1e6,1e6,-1e6];
             parameter_new(id,:) = lsqnonlin(fun,parameter_initial);               % 非线性拟合
 
 %             % 将拟合结果代入函数
@@ -122,5 +121,6 @@ function parameter = CalculateParameter(Image,Curves_origin,parameter_origin,num
     end
 
     parameter = parameter_new;
+    CurvesFinal = CurveClassfication;
 end
 

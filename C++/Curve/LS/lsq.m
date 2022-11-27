@@ -68,7 +68,7 @@ function [] = lsq(file_path,file_name,file_ext)
     fprintf('min_x:%d,max_x:%d,min_y:%d,max_y:%d\n',min_x,max_x,min_y,max_y);
     [image_y_max, image_x_max] =  size(Image);
     fprintf('裁剪后长度:%d，裁剪后宽度:%d\n',image_y_max,image_x_max);
-    figure(3),imshow(Image);
+    %figure(3),imshow(Image);
 
     %根据每列的和判断是否有交点，我们希望截取一段无交点部分(最长的部分)
     count = zeros(image_x_max,1);
@@ -79,14 +79,16 @@ function [] = lsq(file_path,file_name,file_ext)
     num_curve = max(count);
     num_curve_cut = find(count == num_curve);
     length = size(num_curve_cut);
-    min_length = round(image_x_max/4);
+    min_length = round(image_x_max/20);
     while (length < min_length)
         count(num_curve_cut) = 0;
         num_curve = num_curve - 1;
         num_curve_cut = find(count == num_curve);
         length = size(num_curve_cut);
     end
-
+    
+    fprintf('判定缆绳数量为：%d',num_curve);
+        
     length = 1;
     i = 1;
     while  ( i < image_x_max ) && ( count(i) ~= num_curve )
@@ -114,20 +116,7 @@ function [] = lsq(file_path,file_name,file_ext)
 
 
 
-    %以下是找第一段无交点部分，有可能出现这部分很短的情况，效果不好。
-
-    % max_column = find(count == num_curve);
-    % inter_column =  1;
-    % for i = max_column(1) : 1: image_x_max
-    %     if  (count(i) < num_curve)
-    %         inter_column = i;
-    %         break;
-    %     end
-    % end
-
-    % Image_cut = Image( :, max_column(1) :inter_column -1);
-    % figure,imshow(Image_cut);
-    % [imagecut_y_max,imagecut_x_max] = size(Image_cut);
+    
 
        %注意此处，share_index + length -1 才是终点，不然会多取一个
     Image_cut  = Image( : , share_index : share_index + length - 1);
@@ -157,23 +146,58 @@ function [] = lsq(file_path,file_name,file_ext)
             parameter_origin(i,:) = lsqnonlin(fun,parameter_initial);               % 非线性拟合
     end
 
-    % figure,imshow(Image),hold on
-    % for id  =  1 : num_curve
-    %     t = parameter_origin(id,:);
-    %     x_fit = zeros(image_x_max,1);
-    %     y_fit = zeros(image_x_max,1);
-    %     for x = 1 : image_x_max
-    %         x_fit(x) = x;
-    %         y_fit(x) = t(1)*cosh((x - t(2))./ t(1)) + t(3);
-    %     end
-    %     u_fit = - y_fit + image_y_max;
-    %     plot(x_fit,u_fit,'LineWidth',2,'Color','green');
-    %     hold on
-    % end
+    figure(1),imshow(Image),hold on
+    for id  =  1 : num_curve
+        t = parameter_origin(id,:);
+        x_fit = zeros(image_x_max,1);
+        y_fit = zeros(image_x_max,1);
+        for x = 1 : image_x_max
+            x_fit(x) = x;
+            y_fit(x) = t(1)*cosh((x - t(2))./ t(1)) + t(3);
+        end
+        u_fit = - y_fit + image_y_max;
+        plot(x_fit,u_fit,'LineWidth',2,'Color','green');
+        hold on
+    end
+    
+    
+    
+    [parameter,CurvesFinal] = CalculateParameter(Image,Curves,parameter_origin,num_curve,6);
+    radian = zeros(num_curve,1);
+    for id = 1: num_curve
+            curve_x = CurvesFinal(:,1,id);
+            curve_y = CurvesFinal(:,2,id);
+            %将曲线中没有选定点的列删除。
+            zero_column = find(curve_y == 0);
+            curve_x(zero_column) = [];
+            curve_y(zero_column) = [];
+            %取出样本点的起点和终点，画出直线。
+            pnt_num = size(curve_x,1);
+            x_start = curve_x(1);
+            y_start = curve_y(1);
+            x_end = curve_x(pnt_num);
+            y_end = curve_y(pnt_num);
+            %起点到终点的直线。
+            k = (y_end - y_start) / (x_end - x_start);
+            b = y_start - k * x_start;
+            
 
+            
+            %计算曲线到直线的距离，取出最大值计算弯曲度
+            line_length  = sqrt(power(x_end - x_start,2) + power(y_end - y_start,2));
+            distance = zeros(pnt_num,1);
+            for i =  1 : pnt_num
+                distance(i) = abs(k*curve_x(i) - curve_y(i) + b) / sqrt(1 + k*k);
+            end
+            max_distance = max(distance);
+            radian(id) = max_distance / line_length;
+            fprintf('y = %f x + %f , radian : %f \n',k,b,radian(id));
+    end
+    
+    
 
-    parameter = CalculateParameter(Image,Curves,parameter_origin,num_curve,3);
-    %parameter  = parameter_origin;
+    
+    
     figure(5),imshow(Image),hold on
     for id  =  1 : num_curve
         t = parameter(id,:);
@@ -184,16 +208,21 @@ function [] = lsq(file_path,file_name,file_ext)
             y_fit(x) = t(1)*cosh((x - t(2))./ t(1)) + t(3);
         end
         u_fit = - y_fit + image_y_max;
-        plot(x_fit,u_fit,'LineWidth',1,'Color','green');
+        plot(x_fit,u_fit,'LineWidth',2,'Color','green');
         hold on
     end
     
-    fig= strcat(file_path,file_name,'_fit3');
+    fig= strcat(file_path,file_name,'_fit');
     print('-dpng' , '-r200' , fig);
     para_save = strcat('./parameter/',file_name,'_parameter.txt');
     para = fopen(para_save,'wt');
-    fprintf(para,'%12s %12s %12s \r\n','a','b','c');
-    fprintf(para,'%12.8f %12.8f %12.8f \r\n',parameter);
+    fprintf(para,'%12s %12s %12s %12s \r\n','a','b','c','radian');
+    for i = 1 : num_curve
+        fprintf(para, '%12.8f %12.8f %12.8f', parameter(i, :));
+        fprintf(para, '%12.8f \r\n',radian(i));
+    end
+%     fprintf(para,'%12.8f %12.8f %12.8f',parameter);
+%     fprintf(para,'%12.8f  \r\n',radian);
     fclose(para);
 end
 
