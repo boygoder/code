@@ -51,7 +51,6 @@ function [parameter,CurvesFinal] = CalculateParameter(Image,Curves_origin,parame
                         min_distance = min(y_distance);
                         if (min_distance < 12)
                             curve_id = find(y_distance == min_distance);
-                            %CurveClassfication(x,1,curve_id) = v;
                             CurveClassfication(x,2,curve_id) = y;
                         end
                     end
@@ -121,6 +120,6 @@ function [parameter,CurvesFinal] = CalculateParameter(Image,Curves_origin,parame
     end
 
     parameter = parameter_new;
-    CurvesFinal = CurveClassfication;
+    CurvesFinal = Curves_origin;
 end
 

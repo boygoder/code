@@ -6,32 +6,13 @@ function [] = lsq(file_path,file_name,file_ext)
     if ndims(Gray) == 3
         Gray = rgb2gray(Gray);
     end
-    %figure(1),imshow(Gray) %将图像显示出来
+    figure(1),imshow(Gray) %将图像显示出来
     Image = im2double(Gray);%将图片的数据类型从unit8变为double型
     %=====输入源图像大小
     [image_y_max, image_x_max] =  size(Image);
     fprintf('原图片高度：%d,原图片宽度：%d\n',image_y_max,image_x_max);
-    %将曲线宽度降为1像素
-    for x  =  1 : image_x_max 
-        white = false;
-        for y =  image_y_max :-1 : 1
-            v = x;
-            u = -y + image_y_max + 1;
-            if (Image(u,v) == 1)
-                if (white == false)
-                    white = true;
-                else
-                    Image(u,v) = 0;
-                end
-            else
-                white = false;
-            end
-        end
-    end
-    %figure(2),imshow(Image)
-
-
-    %对图片进行裁剪，只取包含曲线的部分
+   
+        %对图片进行裁剪，只取包含曲线的部分
     min_x = 1;
     max_x = 1;
     min_y = 1;
@@ -68,7 +49,29 @@ function [] = lsq(file_path,file_name,file_ext)
     fprintf('min_x:%d,max_x:%d,min_y:%d,max_y:%d\n',min_x,max_x,min_y,max_y);
     [image_y_max, image_x_max] =  size(Image);
     fprintf('裁剪后长度:%d，裁剪后宽度:%d\n',image_y_max,image_x_max);
-    %figure(3),imshow(Image);
+    figure(2),imshow(Image);
+    cut= strcat(file_path,file_name,'_cut');
+    print('-dpng' , '-r200' , cut);
+    
+    %将曲线宽度降为1像素
+    for x  =  1 : image_x_max 
+        white = false;
+        for y =  image_y_max :-1 : 1
+            v = x;
+            u = -y + image_y_max + 1;
+            if (Image(u,v) == 1)
+                if (white == false)
+                    white = true;
+                else
+                    Image(u,v) = 0;
+                end
+            else
+                white = false;
+            end
+        end
+    end
+    figure(3),imshow(Image)
+
 
     %根据每列的和判断是否有交点，我们希望截取一段无交点部分(最长的部分)
     count = zeros(image_x_max,1);
@@ -120,7 +123,7 @@ function [] = lsq(file_path,file_name,file_ext)
 
        %注意此处，share_index + length -1 才是终点，不然会多取一个
     Image_cut  = Image( : , share_index : share_index + length - 1);
-    %figure(4),imshow(Image_cut);
+    figure(4),imshow(Image_cut);
     [imagecut_y_max,imagecut_x_max] = size(Image_cut);
 
     %截取初始用来回归的点
@@ -146,7 +149,7 @@ function [] = lsq(file_path,file_name,file_ext)
             parameter_origin(i,:) = lsqnonlin(fun,parameter_initial);               % 非线性拟合
     end
 
-    figure(1),imshow(Image),hold on
+    figure(5),imshow(Image),hold on
     for id  =  1 : num_curve
         t = parameter_origin(id,:);
         x_fit = zeros(image_x_max,1);
@@ -163,6 +166,14 @@ function [] = lsq(file_path,file_name,file_ext)
     
     
     [parameter,CurvesFinal] = CalculateParameter(Image,Curves,parameter_origin,num_curve,6);
+    for id = 1 : num_curve
+        a = parameter(id,1);
+        b = parameter(id,2);
+        c = parameter(id,3);
+        fprintf('y = %f*cosh((x- %f)/%f) + %f \n',a,b,a,c);
+    end
+    
+    
     radian = zeros(num_curve,1);
     for id = 1: num_curve
             curve_x = CurvesFinal(:,1,id);
@@ -171,15 +182,17 @@ function [] = lsq(file_path,file_name,file_ext)
             zero_column = find(curve_y == 0);
             curve_x(zero_column) = [];
             curve_y(zero_column) = [];
+            
             %取出样本点的起点和终点，画出直线。
             pnt_num = size(curve_x,1);
             x_start = curve_x(1);
             y_start = curve_y(1);
             x_end = curve_x(pnt_num);
             y_end = curve_y(pnt_num);
+            
             %起点到终点的直线。
             k = (y_end - y_start) / (x_end - x_start);
-            b = y_start - k * x_start;
+            b = y_end - k * x_end;
             
 
             
@@ -191,13 +204,10 @@ function [] = lsq(file_path,file_name,file_ext)
             end
             max_distance = max(distance);
             radian(id) = max_distance / line_length;
-            fprintf('y = %f x + %f , radian : %f \n',k,b,radian(id));
+            fprintf('y = %f x + %f ',k,b);
     end
     
-    
-
-    
-    
+    disp(radian);
     figure(5),imshow(Image),hold on
     for id  =  1 : num_curve
         t = parameter(id,:);
@@ -216,13 +226,11 @@ function [] = lsq(file_path,file_name,file_ext)
     print('-dpng' , '-r200' , fig);
     para_save = strcat('./parameter/',file_name,'_parameter.txt');
     para = fopen(para_save,'wt');
-    fprintf(para,'%12s %12s %12s %12s \r\n','a','b','c','radian');
+    fprintf(para,'%20s %20s %20s %20s \r\n','a','b','c','radian');
     for i = 1 : num_curve
         fprintf(para, '%12.8f %12.8f %12.8f', parameter(i, :));
         fprintf(para, '%12.8f \r\n',radian(i));
     end
-%     fprintf(para,'%12.8f %12.8f %12.8f',parameter);
-%     fprintf(para,'%12.8f  \r\n',radian);
     fclose(para);
 end
 
