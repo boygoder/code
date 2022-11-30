@@ -1,0 +1,287 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{float}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\title{悬链线拟合}
+\author{}
+\date{}
+
+
+
+\begin{document}
+\maketitle
+
+
+
+\section{问题介绍}
+
+作为世界上吞吐量最大的港口之一的宁波港，每年停靠在这个港口的船舶不计其数。目前需要人工巡检手段去监控这些船舶是否稳定的停靠在码头内，效率低下，也无法在较长的船舶停靠区内做到实时监测到揽绳的实时状态。
+
+船舶系泊的揽绳是否松动是衡量船舶停靠的核心依据，我们希望通过无人化手段去监测缆绳是否松动。
+
+对于如下图所示的二值图，我们要解决的问题是，细分出图片中每一根缆绳，拟合缆绳曲线，进而计算出缆绳的弯曲度。
+
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{./fig/example1.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{./fig/example2.png}}
+\end{minipage}
+\end{figure}
+
+
+\section{解决思路}
+
+数据： 二值图的像素矩阵，白色像素处值为1，黑色像素处值为0。
+
+方程：悬链线是一种曲线。一条理想的链条悬挂在两个支撑点之间，并受到均匀的重力作用，形成悬链线的形状。理想的链条是可以完美弯曲、不能拉伸并且整个密度相同的链条。支撑点可以处于不同的高度，形状仍然是悬链线。一般的悬链线方程为\(y = a \cosh((x-b)/a) + c\)。
+
+\begin{itemize}
+\item
+  单侧边缘提取：以水平方向为x轴，对于同一x，每条缆绳覆盖了多个像素点。通过单侧的边缘提取，每条缆绳的像素宽度变为1。\\
+  \begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{./fig/step1-1.png}}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.5\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{./fig/step1-2.png}}
+  \end{minipage}
+  \end{figure}
+
+\item
+  判定缆绳数量：对经过边缘提取后的像素矩阵，每一列求和，并消除可能出现的干扰点影响，最终求和结果的最大值就是图片中的缆绳数量。\\
+  \begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+  \centerline{\includegraphics[width = 0.8\textwidth]{./fig/step2-1.png}}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.5\linewidth}
+  \centerline{\includegraphics[width = 0.8\textwidth]{./fig/step2-2.png}}
+  \end{minipage}
+  \end{figure}
+
+\item
+  区分不同缆绳：首先取出一段不同缆绳的无交点部分作为样本点，进行第一次曲线拟合。\\
+  \begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{./fig/step3-1.png}}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.5\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{./fig/step3-2.png}}
+  \end{minipage}
+  \end{figure}
+
+\item
+  曲线拟合：为了获取周围的样本点，根据拟合出的近似曲线，依次计算样本点和每一条曲线的距离。根据距离大小决定样本点应该归属的曲线，进行下一次曲线拟合。重复，直至获取所有的样本点。\\
+  \begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{./fig/step4-1.png}}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.5\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{./fig/step4-2.png}}
+  \end{minipage}
+  \end{figure}
+
+\item
+  计算弧度：弧度定义：每条曲线2个顶点连成一条直线，直线长度L，计算曲线上每个点和直线的距离，最大距离为H，弧度定义为H/L。这里两个顶点取为拟合曲线所用到的最左侧和最右侧样本点。\\
+  \begin{figure}[H]
+  \begin{minipage}{0.5\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{./fig/parameter1.png}}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.5\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{./fig/parameter2.png}}
+  \end{minipage}
+  \end{figure}
+\end{itemize}
+
+
+\section{结果展示}
+
+左侧为输入图片的裁切，右侧为拟合曲线。
+
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/1_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/1_fit.png}}
+\end{minipage}
+\caption{radian : 0.00784004 0.00778617 0.0560188 }
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/2_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/2_fit.png}}
+\end{minipage}
+\caption{radian : 0.12362332 0.0155812  0.00775662}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/3_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/3_fit.png}}
+\end{minipage}
+\caption{radian : 0.00802192 0.60055564 0.0745157}
+\end{figure}
+
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/4_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/4_fit.png}}
+\end{minipage}
+\caption{radian : 0.12146684 0.01148749 0.00446624}
+\end{figure}
+
+ \begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/5_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/5_fit.png}}
+\end{minipage}
+\caption{radian : 0.05094299 0.01116865 0.03528981}
+\end{figure}
+
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/6_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/6_fit.png}}
+\end{minipage}
+\caption{radian : 0.00536094 0.00430342 0.00902013}
+\end{figure}
+
+  \begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/7_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/7_fit.png}}
+\end{minipage}
+\caption{radian : 0.10275823 0.0057146  0.00573458}
+\end{figure}
+
+
+ \begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/8_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/8_fit.png}}
+\end{minipage}
+\caption{radian : 0.12433642 0.01011834 0.00875508}
+\end{figure}
+
+ \begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/9_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/9_fit.png}}
+\end{minipage}
+\caption{radian : 0.00773065 0.00770052 0.01461635}
+\end{figure}
+
+ \begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/10_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/10_fit.png}}
+\end{minipage}
+\caption{radian : 0.12203165 0.01043537 0.00586106}
+\end{figure}
+
+ \begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/11_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/11_fit.png}}
+\end{minipage}
+\caption{radian : 0.00507701 0.02154793 0.00357411 0.01420405}
+\end{figure}
+
+ \begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = 2\textwidth]{../figure/12_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = 2\textwidth]{../figure/12_fit.png}}
+\end{minipage}
+\caption{radian : 0.00552706 0.05701588}
+\end{figure}
+
+
+ \begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/13_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = \textwidth]{../figure/13_fit.png}}
+\end{minipage}
+\caption{radian : 0.00525744 0.0040048  0.01104831}
+\end{figure}
+
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = 0.8\textwidth]{../figure/14_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = 0.8\textwidth]{../figure/14_fit.png}}
+\end{minipage}
+\caption{radian : 0.00715935 0.27084455 0.62418447}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = 0.8\textwidth]{../figure/15_cut.png}}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width = 0.8\textwidth]{../figure/15_fit.png}}
+\end{minipage}
+\caption{radian: 0.00881595 0.01472718 0.00523674}
+\end{figure}
+
+
+
+
+
+
+\end{document}
