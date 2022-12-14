@@ -12,20 +12,24 @@ enum class Sorter {heapsort,quicksort};
 vector<int> generateVector(int len, double proportion)
 {
 	assert(proportion >=0 && proportion <= 1);
-	int c = -len*(len-1)*proportion;
-	int orderedLen = (int)(0.5*(1 + sqrt(1-4*c)));
+	int c = sqrt(len*(len-1)*(1 - proportion));
+	int orderedLen = c;
 	vector<int> vec;
 	for (int i = 0; i < orderedLen; i++)
 	{
+		vec.push_back(len - i);
+	}
+	for(int i = orderedLen; i < len; i++)
+	{
 		vec.push_back(len + i);
 	}
-	random_device r;//Seed with a real random value, if available
-    default_random_engine re(r()); // the default engine
-	uniform_int_distribution<int> uniform_dist{0,len}; // distribution that maps to the ints
-	for (int j = 0; j < len; j++)
-	{
-		vec.push_back(uniform_dist(re));
-	}
+	// random_device r;//Seed with a real random value, if available
+ 	// default_random_engine re(r()); // the default engine
+	// uniform_int_distribution<int> uniform_dist{0,len}; // distribution that maps to the ints
+	// for (int j = 0; j < len; j++)
+	// {
+	// 	vec.push_back(uniform_dist(re));
+	// }
 
 	// for(auto p : vec)
 	// {
@@ -67,7 +71,7 @@ double getRunTime(vector<int>& array, int loops, Sorter sorter)
 
 int main()
 {
-	vector<int> sizes = {10000,20000,40000,80000,160000};
+	vector<int> sizes = {100000};//,20000,40000,80000,160000};
 	int loops = 20;
 	vector<double> proportion = {0.01,0.1,0.9,0.99};
 	ofstream fout("data.txt",ios::out);     //创建一个data.txt的文件
