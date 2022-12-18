@@ -1,0 +1,237 @@
+\documentclass[10pt]{beamer}
+\usetheme{Madrid}
+
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{hyperref}
+\usepackage{amsmath,bm,amsfonts,amssymb,enumerate,epsfig,bbm,calc,color,capt-of,multimedia,hyperref}
+\usepackage{ctex}
+\usepackage{fancybox}
+\usepackage{times}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{colortbl}
+
+\usepackage{xcolor}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\usepackage{fontspec} % 定制字体
+\lstset{ %
+	backgroundcolor=\color{white},      % choose the background color
+	basicstyle=\footnotesize\ttfamily,  % size of fonts used for the code
+	columns=fullflexible,
+	tabsize=4,
+	breaklines=true,               % automatic line breaking only at whitespace
+	captionpos=b,                  % sets the caption-position to bottom
+	commentstyle=\color{mygreen},  % comment style
+	escapeinside={\%*}{*)},        % if you want to add LaTeX within your code
+	keywordstyle=\color{blue},     % keyword style
+	stringstyle=\color{mymauve}\ttfamily,  % string literal style
+	frame=none,
+	rulesepcolor=\color{red!20!green!20!blue!20},
+	% identifierstyle=\color{red},
+	language=c++,
+}
+
+
+\title{缆绳拟合中的问题与解决思路}
+\subtitle{}
+\author{史鸿儒}
+\centering
+\date{\today}
+
+
+\begin{document}
+\thispagestyle{empty}	%使封面没有导航条
+\maketitle
+
+%------------------目录页
+	\begin{frame}           %生成目录页，目录太长时加选项[shrink]
+%	\setcounter{page}{0}	%setcounter似乎对beamer无效
+	\addtocounter{framenumber}{-2}%---------位置放在beginframe之后，不然无效
+	\frametitle{目录}
+	\thispagestyle{empty}
+	\tableofcontents        % 也可以插入选项 [pausesections]
+	%----------------------列目录时，隐藏所有的小节
+	%\tableofcontents[hideallsubsections]
+	\end{frame}
+
+
+
+
+\section{悬链线}
+\begin{frame}{悬链线}
+
+\begin{block}{数据}
+二值图的像素矩阵，白色像素处值为1，黑色像素处值为0。
+\end{block}
+
+\begin{block}{悬链线方程}
+悬链线是一种曲线。一条理想的链条悬挂在两个支撑点之间，并受到均匀的重力作用，形成悬链线的形状。理想的链条是可以完美弯曲、不能拉伸并且整个密度相同的链条。支撑点可以处于不同的高度，形状仍然是悬链线。一般的悬链线方程为\(y = a \cosh((x-b)/a) + c\)
+\end{block}
+\begin{figure}
+  \centerline{\includegraphics[height=3cm]{example.png}}
+  \caption{$example$}
+\end{figure}
+
+\end{frame}
+
+\section{拟合步骤}
+\begin{frame}{1.单侧边缘提取}
+单侧边缘提取：以水平方向为x轴，对于同一x，每条缆绳覆盖了多个像素点。通过单侧的边缘提取，每条缆绳的像素宽度变为1。
+\begin{figure}
+  \centerline{\includegraphics[height=3cm]{edge.png}}
+  \caption{$edge$}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{2.判定缆绳数量}
+判定缆绳数量：对经过边缘提取后的像素矩阵，每一列求和，并消除可能出现的干扰点影响，最终求和结果的最大值就是图片中的缆绳数量。
+\begin{figure}
+  \centerline{\includegraphics[height=3cm]{cut.png}}
+  \caption{$cut$}
+\end{figure}
+\end{frame}
+
+\begin{frame}{3.区分不同缆绳}
+区分不同缆绳：首先取出一段不同缆绳的无交点部分作为样本点，进行第一次曲线拟合。
+\begin{figure}
+  \centerline{\includegraphics[height=3cm]{first_fit.png}}
+  \caption{$first_fit$}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{4.曲线拟合}
+曲线拟合：为了获取周围的样本点，根据拟合出的近似曲线，依次计算样本点和每一条曲线的距离。根据距离大小决定样本点应该归属的曲线，进行下一次曲线拟合。重复，直至获取所有的样本点。
+\begin{figure}
+  \centerline{\includegraphics[height=3cm]{final_fit.png}}
+  \caption{$final_fit$}
+\end{figure}
+\end{frame}
+
+\begin{frame}{5.计算弧度}
+计算弧度：弧度定义：每条曲线2个顶点连成一条直线，直线长度L，计算曲线上每个点和直线的距离，最大距离为H，弧度定义为H/L。这里两个顶点取为拟合曲线所用到的最左侧和最右侧样本点。
+\begin{figure}
+  \centerline{\includegraphics[height=3cm]{radian.png}}
+  \caption{$radian$}
+\end{figure}
+\end{frame}
+
+
+\section{拟合问题}
+\begin{frame}{交点部分过长}
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width=6cm]{bad_example1.png}}
+  \caption{原图}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width=6cm]{bad_fit1.png}}
+  \caption{交点部分过长时}
+\end{minipage}
+\end{figure}
+
+原因：可供初始拟合的样本点（无交点部分）过短。
+\end{frame}
+
+\begin{frame}{交点部分过短}
+
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width=6cm]{bad_example2.png}}
+  \caption{原图}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width=6cm]{bad_fit2.png}}
+  \caption{交点部分过短时}
+\end{minipage}
+
+原因：无法将其识别为两条曲线。
+\end{figure}
+\end{frame}
+
+
+\section{断点连接}
+
+\begin{frame}{断点连接}
+数据：二值图的像素矩阵，白色像素处值为1，黑色像素处值为0。
+要求：将下图中原本是一条缆绳的部分，连接起来。
+\begin{figure}
+  \centerline{\includegraphics[height=5cm]{breakpoint.png}}
+  \caption{例图}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{解决思路}
+\begin{enumerate}
+\item 识别端点：通过遍历白色点的左上邻域，查看是否存在白色点，来确定该点是否为左端点。同理，遍历右下邻域来确定该点是否为右端点。
+\item 将要连接的端点组成点对：计算所有左端点与右端点之间的距离，将距离最小的点对连接。
+\item 删除已经连接的点对。
+\item 重复第2、3步，直到点对之间的最小距离大于阈值。
+\end{enumerate}
+\begin{figure}
+  \centerline{\includegraphics[height=3cm]{neighbors.png}}
+  \caption{八邻域}
+\end{figure}
+\end{frame}
+
+\begin{frame}{测试}
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width=5cm]{breakpoint.png}}
+  \caption{原图}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width=6cm]{connect.png}}
+  \caption{断点连接}
+\end{minipage}
+\end{figure}
+\end{frame}
+
+\begin{frame}{存在的问题}
+当断点之间距离过远时，会错连。
+\begin{figure}[H]
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width=5cm]{bad_breakpoint.png}}
+  \caption{原图}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\linewidth}
+  \centerline{\includegraphics[width=6cm]{bad_connect.png}}
+  \caption{断点连接}
+\end{minipage}
+\end{figure}
+
+\end{frame}
+\subsection{$output\_results( )$}
+%\begin{frame}{结果示例}
+%\begin{figure}[H]
+%\begin{minipage}{0.48\linewidth}
+%  \centerline{\includegraphics[height=4.8cm]{vtk0.png}}
+%  \caption{边界条件为$u = 0$.}
+%\end{minipage}
+%\hfill
+%\begin{minipage}{0.48\linewidth}
+%  \centerline{\includegraphics[height=4.8cm]{vtk1.png}}
+%  \caption{$y=-1$和$y=1$边界条件为$u=1$,其余为$u=0$.}
+%\end{minipage}
+%\end{figure}
+%\end{frame}
+
+
+
+\begin{frame}
+\huge{\centerline{The End}}
+\end{frame}
+
+\end{document}
+

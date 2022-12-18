@@ -66,8 +66,9 @@
 
 %
 \documentclass[10pt,journal,compsoc]{IEEEtran}
-\usepackage{xeCJK}
+\usepackage{CTEX}
 \usepackage{diagbox}
+\usepackage[justification=centering]{caption}
 % If IEEEtran.cls has not been installed into the LaTeX system files,
 % manually specify the path to it like:
 % \documentclass[10pt,journal,compsoc]{../sty/IEEEtran}
@@ -526,7 +527,7 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{计算机体系结构综述}
+\title{缓存替换策略综述}
 %
 %
 % author names and IEEE memberships
@@ -550,8 +551,8 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 % journal papers have the author affiliations above the "Manuscript
 % received ..."  text while in non-compsoc journals this is reversed. Sigh.
 
-\author{MAO~Chaoli \\
-\IEEEmembership{(China Nanhu Academy of Electronics and Information Technology,Jiaxing 314002,China)} 
+\author{史鸿儒 \\
+\IEEEmembership{(22235086，浙江大学数学科学学院)} 
 }
 
 % note the % following the last \IEEEmembership and also \thanks - 
@@ -575,7 +576,7 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 
 
 % The paper headers
-\markboth{Technology of IoT \& AI,~Vol.~4, No.~5, Sep~20}%
+\markboth{Hongru Shi, 22235086}%
 {Shell \MakeLowercase{\textit{et al.}}: Bare Advanced Demo of IEEEtran.cls for IEEE Computer Society Journals}
 % The only time the second header will appear is for the odd numbered pages
 % after the title page when using the twoside option.
@@ -615,15 +616,15 @@ pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-最后一次课结束后一周内，每位同学需要提交一篇论文综述；
-不少于5000字；
-不少于10篇参考文献；
+高速缓存是现代处理器中的重要组件。缓存的有效性在很大程度上受其替换策略的影响。本文中我们主要介绍四种缓存替换策略，它们是在一些经典的缓存替换策略的基础上，进行改进。第一个是P-OPT，这是一个应用在图处理方面的缓存替换策略。第二个是Ripple，这是一种完全基于软件的策略，能够优化硬件上的替换策略，并且是一种指令缓存替换策略。第三种是RLR,这是利用强化学习推导出了一个新的缓存替换策略强化学习替换策略(Replacment Learned Replacement)。第四种是Glider,这种替换策略建立在 Hawkeye 缓存替换策略的基础上，利用深度学习推导。
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
-partial differential equations,deep learning-based method,unconstrained optimization,L-BFGS.
-\end{IEEEkeywords}}
+缓存替换,P-OPT,Ripple,RLR,Glider。
+\end{IEEEkeywords}
+
+}
 
 
 % make the title area
@@ -656,7 +657,7 @@ partial differential equations,deep learning-based method,unconstrained optimiza
 \ifCLASSOPTIONcompsoc
 \IEEEraisesectionheading{\section{Introduction}\label{sec:introduction}}
 \else
-\section{Introduction}
+\section{引言}
 \label{sec:introduction}
 \fi
 % Computer Society journal (but not conference!) papers do something unusual
@@ -685,379 +686,173 @@ partial differential equations,deep learning-based method,unconstrained optimiza
 % 
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
-Scientific computing has become the third scientific method that can be paralleled with theoretical and experimental scientific methods\cite{ShiZhongci2000}\cite{LuJinfu2004}. An important content in scientific computing is to numerically solving partial differential equations\cite{logan2014}. Partial differential equations can describe physical processes such as nuclear explosions and fluid flow. Complex theoretical solutions of some partial differential equations cannot be applied in practical operations. Using scientific computing methods to obtain numerical solutions can reduce the number of experiments and reduce research and development costs. Some data show that\cite{ShiZhongci2000}, from the beginning of development to the successful explosion of the atomic bomb, my country has carried out 338 nuclear tests, while the United States and the Soviet Union have carried out 936 and 716 tests respectively. One of the important reasons is that Chinese scientists have fully adopted numerical simulation methods based on scientific computing methods to solve partial differential equations.
 
-Algorithms for numerically solving partial differential equations include finite difference method, finite volume method, finite element method and spectral method. The finite difference method replaces the differential with the difference quotient approximation \cite{LuJinfu2004}, thereby transforming the continuous partial differential equation into an algebraic equation for solving. The finite volume method is to discretize the space into structured grids\cite{LuJinfu2004}, and impose conservation laws in each grid, thereby transforming the global partial differential equations into local algebraic equations for solving. The finite element method divides the original geometric space to be solved into finite elements, and assumes that the original function relationship on each finite element can be approximately linearly combined by a set of basis functions, and the linear combination is brought into the original partial differential equation, There will be an error margin. By introducing a weighting function to minimize the error margin, a linear equation system can be obtained, and the numerical solution of the original partial differential equation can be obtained by solving it\cite{kopriva2009}. The spectral method is similar to the finite element method, the difference is that the spectral method constructs the linear combination of the original function based on the basis function in the global space-time\cite{wang2017}. The above four methods have been fully developed. However, they each have some insurmountable shortcomings. For example, the finite-difference method introduces artificial stickiness that reduces the accuracy of the solution.
-We propose a deep learning-based method for solving partial differential equations. Similar to the finite element method and the spectral method, the method takes partial differential equations as input and outputs a numerical approximation to the true solution. The difference is that the finite element method and the spectral method perform a single calculation on a single input and then output, while the multi-layer neural network in the deep learning method performs multiple calculations on a single input and has stronger non-linear fitting capabilities.
+高速缓存是现代处理器中的重要组件。缓存的有效性在很大程度上受其替换策略的影响。高效的缓存替换策略可以有效降低片外带宽利用率，提高系统整体性能。在缓存替换策略方面有大量先前的工作；然而，设计具有成本效益的缓存替换策略对于芯片设计人员来说仍然具有挑战性，尤其是在严格的硬件限制下。
 
 
+基于启发式的硬件数据缓存替换策略已经研究了很长时间，包括 LRU 及其变体\cite{karedla1994,o1993}、MRU、重新引用区间预测、重用预测和其他。基于学习的数据缓存替换策略将替换视为缓存友好或缓存厌恶的二元分类问题。最近的方法引入了机器学习技术，如感知器和遗传算法。一些基于学习的策略使用 Belady\cite{belady1966}最优解的信息，包括 Hawkeye\cite{jain2016back}、Glider和 Parrot，以及其他替换策略，比如Ship\cite{wu2011ship}、EVA\cite{beckmann2017maximizing}。除了数据缓存替换策略，也有一些针对指令缓存的替换策略，比如Ripple。
+
+本文中我们主要介绍四种缓存替换策略，它们是在一些经典的缓存替换策略的基础上，进行改进。第一个是P-OPT，这是一个应用在图处理方面的缓存替换策略。第二个是Ripple，这是一种完全基于软件的策略，能够优化硬件上的替换策略，并且是一种指令缓存替换策略。第三种是RLR,这是利用强化学习推导出了一个新的缓存替换策略强化学习替换策略(Replacment Learned Replacement)。第四种是Glider,这种替换策略建立在 Hawkeye 缓存替换策略的基础上，利用深度学习推导。
 
 
 
 
-\section{Algorithm Introduction}
-\subsection{Deep Neural Network}
-Feedforward deep neural network is the most basic neural network, which consists of input layer, hidden layer and output layer, and information is propagated unidirectionally from the input layer to the output layer. The input layer and the output layer generally have a single-layer neural network, and the hidden layer can have a multi-layer neural network, and each layer of the neural network is composed of many neurons. In the whole neural network, if any neuron of any layer and all neurons of the next layer are connected, we call it fully connected \cite{ruder2016}. We use this feedforward fully connected neural network in this paper, as shown in Fig.\ref{fig_1}.
 
 
+\section{缓存替换策略}
+
+\subsection{P-OPT:Practical Optimal Cache Replacement for Graph Analytics}
+
+\hspace{0.5em}图处理是一类重要的计算，在网络分析、路径规划、机器学习和 COVID-19 治疗发现中具有重要的应用价值。过去，大型图主要在分布式系统上处理 。今天，增加的主内存容量和核心数量允许在单台机器上更有效地处理具有数十亿条边的图形，而不是分布式系统。
+
+P-OPT是在图数据结构处理中一种实用的最佳缓存替换策略\cite{balaji2021p}。现存的缓存替换策略在图处理方面表现不佳，这归结于两个原因，第一个原因是一张图可能有上亿个节点，工作集大小远大于缓存大小，从而导致频繁的动态随机访问内存(DRAM)。访问动态内存造成的延迟在执行时间内通常占主导地位。第二个原因是图钟数据的重用，比如访问节点或者边的信息，是动态变化的和依赖于图结构的，这两个属性没有被现有的替换策略很好地捕捉到。 Belady 的 MIN 替换策略是一个理想的策略，但它需要了解未来是如何访问的，所以无法在实际工作中应用。
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=3.5in]{figure/fig1.jpg}
-\caption{Schematic diagram of neural network}
+\includegraphics[width=3.5in]{figure/fig1.png}
+\caption{邻接矩阵}
 \label{fig_1}
 \end{figure}
 
-Each neuron in the hidden layer contains an activation function. The activation function is a simple continuous function \cite{ruder2016}, such as the hyperbolic sine function, hyperbolic tangent function, etc. In this paper, the hyperbolic tangent function is selected as the activation function, as shown in Equation (\ref{equ_1}).
-
-
-
-\begin{equation}
-\tanh{(x)} = \dfrac{e^{x}-e^{-x}}{e^{x}+e^{-x}}
-\label{equ_1}
-\end{equation}
-
-Usually, activation functions have the same form. For a neuron in the hidden layer, the weighted average of the information transmitted by the neurons in the previous layer, plus paranoia, is used as the input of the neuron, the activation function acts on the input, and the output is passed to the next layer of neurons.
-
-Expressed in the form of a matrix, the information received by the first layer of the hidden layer is shown in Equation (\ref{equ_2}).
-
-
-\begin{equation}
-\mathbf{X_{1}} = \mathbf{W_{1}^{T}} \mathbf{a}
-\label{equ_2}
-\end{equation}
-where：
-
-\begin{equation}
-\mathbf{W_{1}^{T}} = \begin{bmatrix}
-w_{11} & w_{21} & w_{31} & w_{41} \\
-w_{12} & w_{22} & w_{32} & w_{42} \\
-w_{13} & w_{23} & w_{33} & w_{43} \\
-w_{14} & w_{24} & w_{34} & w_{44} \\
-w_{15} & w_{25} & w_{35} & w_{45} \\
-w_{16} & w_{26} & w_{36} & w_{46} \\
-\end{bmatrix},
-\mathbf{a} = \begin{bmatrix}
-t \\
-x \\
-y \\
-z \\
-\end{bmatrix}
-\label{equ_3}
-\end{equation}
-
-Equation (\ref{equ_3}) represents the weight coefficient matrix and input information vector of the input layer acting on the first layer of the hidden layer, respectively. Under the action of the activation function, the output information of the neurons in the first layer of the hidden layer is shown in Equation (\ref{equ_4}).
-
-
-\begin{equation}
-\mathbf{Y_{1}} = \sigma \mathbf{(X_{1} + B_{1})} = \sigma(\mathbf{W_{1}^{T} a + B_{1}})
-\label{equ_4}
-\end{equation}
-where $\sigma$ represents the activation function, and $\mathbf{B}_{1}$ represents the bias vector of the neurons in this layer. For the neural network with two hidden layers shown in Fig.\ref{fig_1}, the information is filtered and reaches the output layer as shown in Equation (\ref{equ_5}).
-
-\begin{equation}
-\mathbf{u} = \mathbf{W_{3}^{T} Y_{2}} = \mathbf{W_{3}^{T}} \sigma{[\mathbf{W_{2}^{T}} \sigma{(\mathbf{W_{1}^{T}a + \mathbf{B_{1}})}} + \mathbf{B_2}]}
-\label{equ_5}
-\end{equation}
-
-Where $\mathbf{W_{3}} \in \mathbb{R}^{4 \times 1}$ is the weight coefficient matrix when the second layer of the hidden layer is passed to the output layer. It can be seen that the final output information is a complex non-linear relationship between the input information and a series of weight coefficients and biases. We adjust the weight coefficients and biases so that the non-linear relationship approximates the true solution.
-
-\subsection{Algorithmic Framework}
-
-For the convenience of discussion, without loss of generality, this paper considers the second-order partial differential equation of the following form, as shown in Equation (\ref{equ_6}).
-
-\begin{equation}
-f \left (
-\begin{aligned}
-&\dfrac{\partial^{2} \mathbf{u}}{\partial{t^2}},
-\dfrac{\partial^{2} \mathbf{u}}{\partial{x^2}},
-\dfrac{\partial^{2} \mathbf{u}}{\partial{y^2}},
-\dfrac{\partial^{2} \mathbf{u}}{\partial{z^2}},
-\dfrac{\partial^{2} \mathbf{u}}{\partial{x}\partial{t}},
-\dfrac{\partial^{2} \mathbf{u}}{\partial{x}\partial{y}},
-\dfrac{\partial^{2} \mathbf{u}}{\partial{x}\partial{z}},\\
-&\dfrac{\partial^{2} \mathbf{u}}{\partial{y}\partial{t}},
-\dfrac{\partial^{2} \mathbf{u}}{\partial{y}\partial{z}},
-\dfrac{\partial^{2} \mathbf{u}}{\partial{z}\partial{t}},
-\dfrac{\partial \mathbf{u}}{\partial{t}},
-\dfrac{\partial \mathbf{u}}{\partial{x}},
-\dfrac{\partial \mathbf{u}}{\partial{y}},
-\dfrac{\partial \mathbf{u}}{\partial{z}},
-C
-\end{aligned}
-\right ) = 0
-\label{equ_6}
-\end{equation}
-
-where $C$ represents an arbitrary constant term. Given initial conditions, or boundary conditions, or mixed conditions, the solution of a partial differential equation is uniquely determined. Second, assuming that the solution of the partial differential equation above is approximated using the neural network shown in Fig.\ref{fig_1}, then:
-
-
-
-\begin{equation}
-\mathbf{u}_{NN} = \mathbf{W_{3}^{T} Y_{2}} = \mathbf{W_{3}^{T}} \sigma{[\mathbf{W_{2}^{T}} \sigma{(\mathbf{W_{1}^{T}a + \mathbf{B_{1}})}} + \mathbf{B_2}]}
-\label{equ_7}
-\end{equation}
-
-where the meaning of the parameter symbols in the right term is consistent with Section 1.1, $\mathbf{a} = [t,x,y,z ]^{T}$ is the input information vector. On the one hand, since $\mathbf{u}_{NN}$ is not the exact solution of the partial differential equation, when it is substituted into the left end of the original partial differential equation, the result is not equal to zero, but has a margin deviation $\mathbf{R}_{f}$, as shown in Equation (\ref{equ_8}).
-
-
-
-\begin{equation}
-f \left (
-\begin{aligned}
-&\frac{\partial^{2} \mathbf{u}_{NN}}{\partial{t^2}},
-\dfrac{\partial^{2} \mathbf{u}_{NN}}{\partial{x^2}},
-\dfrac{\partial^{2} \mathbf{u}_{NN}}{\partial{y^2}},
-\dfrac{\partial^{2} \mathbf{u}_{NN}}{\partial{z^2}},
-\dfrac{\partial^{2} \mathbf{u}_{NN}}{\partial{x}\partial{t}},\\
-&\dfrac{\partial^{2} \mathbf{u}_{NN}}{\partial{x}\partial{y}},
-\dfrac{\partial^{2} \mathbf{u}_{NN}}{\partial{x}\partial{z}},
-\dfrac{\partial^{2} \mathbf{u}_{NN}}{\partial{y}\partial{t}},
-\dfrac{\partial^{2} \mathbf{u}_{NN}}{\partial{y}\partial{z}},
-\dfrac{\partial^{2} \mathbf{u}_{NN}}{\partial{x}\partial{z}},\\
-&\dfrac{\partial \mathbf{u}_{NN}}{\partial{t}},
-\dfrac{\partial \mathbf{u}_{NN}}{\partial{x}},
-\dfrac{\partial \mathbf{u}_{NN}}{\partial{y}},
-\dfrac{\partial \mathbf{u}_{NN}}{\partial{z}},
-C
-\end{aligned}
-\right ) = \mathbf{R}_{f}
-\label{equ_8}
-\end{equation}
-
-It should be pointed out here that in the deep neural network, the partial differentiation of the output information with respect to the input information can be calculated using the automatic differentiation. On the other hand, the residual deviation $\mathbf{R}_{i}$ between the output information corresponding to the initial moment and the initial condition is:
-
-
-\begin{equation}
-(\mathbf{u}_{NN}^{initial} - \mathbf{u}_{0}) = \mathbf{R}_{i}
-\label{equ_9}
-\end{equation}
-
-where $\mathbf{u}_{NN}^{initial}=\mathbf{W_{3}^{T}} \sigma{[\mathbf{W_{2}^{T}} \sigma{(\mathbf{W_{1}^{T}a + \mathbf{B_{1}})}} + \mathbf{B_2}]},\mathbf{a}_{0}=[0,x,y,z]^{T}$,$u_{0}$ represents the initial condition of the partial differential equation. The residual deviation between the output information on the boundary of the computational domain space and the boundary conditions is $\mathbf{R}_{\Gamma}$:
-
-
-\begin{equation}
-(\mathbf{u}_{NN}^{boundary} - \mathbf{u}_{\Gamma}) = \mathbf{R}_{\Gamma}
-\label{equ_10}
-\end{equation}
-
-where $\mathbf{u}_{NN}^{boundary}=\mathbf{W_{3}^{T}} \sigma{[\mathbf{W_{2}^{T}} \sigma{(\mathbf{W}_{1}^{T}  \mathbf{a}_{\Gamma} + \mathbf{B}_{1})} + \mathbf{B_2}]},\mathbf{a}_{\Gamma}=[t,x_{\Gamma},y_{\Gamma},z_{\Gamma}]^{T}$,$\mathbf{u}_{\Gamma}$ represents the boundary condition of the partial differential equation. Note that, given the space-time coordinates $[t, x, y, z]^{T}$ of the solution domain, the above three residual deviations can be regarded as functions of the weight coefficient $\mathbf{W}$ and the bias $\mathbf{B}$. Clearly, a good approximation to the solution of partial differential equations should be such that:
-
-
-\begin{equation}
-\begin{aligned}
-F_{loss} = 
-&\dfrac{1}{N_{t}N_{x}N_{y}N_{z}} \sum_{1}^{N_{t}}  \sum_{1}^{N_{z}} \sum_{1}^{N_{y}} \sum_{1}^{N_{x}} \mathbf{R}_{f}^{2} + \\
-&\dfrac{1}{N_{x} N_{y} N_{z}} \sum_{1}^{N_{z}}  \sum_{1}^{N_{y}} \sum_{1}^{N_{x}} \mathbf{R}_{i}^{2} + \\
-&\dfrac{1}{N_{t}N_{x_{\Gamma}}N_{y_{\Gamma}}N_{z_{\Gamma}}} \sum_{1}^{N_{t}}  \sum_{1}^{N_{z_{\Gamma}}} \sum_{1}^{N_{y_{\Gamma}}} \sum_{1}^{N_{x_{\Gamma}}} \mathbf{R}_{\Gamma}^{2} 
-\end{aligned}
-\label{equ_11}
-\end{equation}
-
-The value is the smallest under a series of space-time coordinates uniformly distributed over the solution domain. Among them, $N_x$, $N_y$, $N_z$ and $N_t$ are the number of discrete points in the $x,y,z$ and $t$ directions of the computational domain, respectively, and $N_{x_{\Gamma}}$, $N_{y_{\Gamma}}$, $N_{z_{\Gamma}}$ represent the number of discrete points on the $x,y,z$ boundaries of the computational domain, respectively number. The basis for selecting the sum of squares of the deviation margin as the criterion is similar to that of the least squares method. For details, please refer to the relevant literature \cite{kopriva2009}. Equation (\ref{equ_11}) is the minimum objective function based on the deep learning partial differential equation solving algorithm, which can be regarded as a function of a series of weight coefficients $\mathbf{W}$ and bias $\mathbf{B}$, namely:
-
-\begin{equation}
-F_{loss} = F(\mathbf{W,B})
-\label{equ_12}
-\end{equation}
-
-Therefore, the partial differential equation solving problem is finally transformed into an unconstrained optimization problem. Gradient Descent Method and Quasi-Newton algorithm BFGS are common algorithms for solving unconstrained optimization problems\cite{ruder2016}\cite{nocedal1980}. The L-BFGS algorithm used in this paper is an improvement of the BFGS algorithm, which overcomes the disadvantage of high space complexity\cite{nocedal1980}. The algorithm framework is shown in Fig.\ref{fig_2}.
-
-
+为了理解P-OPT的思想，我们先介绍T-OPT(Transposd-based Cache Replacement)替换策略，T-OPT 可以在不知道未来访问的情况下效仿Belady 的 MIN 策略。存储图可以使用邻接表或邻接矩阵，这里采用的是邻接矩阵，通常，邻接矩阵是稀疏的，如图\ref{fig_1}所示。为了节省存储空间和提高运行效率，可以采用稀疏矩阵的压缩模式：按列压缩(Compressed Sparse Column,CSC)，可以快速访问顶点的传入邻居；按行压缩（Compressed Sparse Row,CSR），可以快速访问顶点的传出邻居。
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=4in]{figure/fig2.png}
-\caption{Algorithm flow chart}
-\centering
+\includegraphics[width=3.5in]{figure/fig2.png}
+\caption{示例算法}
 \label{fig_2}
 \end{figure}
 
-\section{Algorithm Verification}
-
-From a mathematical point of view, partial differential equations can be divided into elliptic equations, hyperbolic equations and parabolic equations \cite{logan2014}. In this paper, three examples corresponding to this classification are selected to verify the algorithm.
-
-\subsection{The Initial Value Problem of One-Dimensional Convective Equation}
-
-The one-dimensional convection equation is a typical first-order hyperbolic partial differential equation with the following form:
-
-
-\begin{equation}
-\dfrac{\partial u}{\partial u} + \alpha \dfrac{\partial u}{\partial x} = 0
-\label{equ_13}
-\end{equation}
-
-where a is a nonzero constant. We know that it is hyperbolic, and its solution is unique given the initial conditions.
-
-Without loss of generality, let $a=-1$ here, and give the following initial conditions:
-
-
-
-\begin{equation}
-u_{0}(x) = \left\{
-\begin{aligned}
-&10x+1,-0.1 \leq x \leq 0 \\
-&-10x+1,0 \leq x \leq 0.1 \\
-&0,otherwise \\
-\end{aligned}
-\right.
-\label{equ_14}
-\end{equation}
-
-The initial signal is triangular with a width of 0.2 and the first derivative is discontinuous at $x=0$. In order to test the accuracy of the proposed algorithm, the proposed algorithm and the finite-difference upwind-style algorithm are used to solve the initial value problem of the above hyperbolic partial differential equation. The results at different times are shown in Fig.\ref{fig_3}.
-
+我们以上图算法为例来讲述T-OPT的替换策略。算法的执行过程是顺序访问每个顶点并处理其所有传入邻居，当缓存被占用满，但需要进行下一次访问时，T-OPT就会执行替换策略，比较缓存行中所有顶点下一次访问的时间，替换距离下一次访问最远的顶点。那么如何查看下一次访问的时间呢？在图\ref{fig_1}当中，处理$D_{0}$的所有传入邻居时，假如访问到了$S_{1}$，通过CSR矩阵可以快速知道下一次访问是在处理D4的传入邻居时，时间复杂度是$O(|Out Degree|)$。但是T-OPT存在着两个局限性：一是运行时间，当缓存行中有多个顶点时，比较所有顶点的下一次访问时间，时间开销会很大。二是会产生缓存竞争，因为缓存中节点的顺序是随机的，当我们使用偏移数组和邻居数组查询邻居时，会导致不规则的内存访问，从而造成缓存竞争。
 
 \begin{figure}[!t]
 \centering
-\subfloat[Upward style]{\includegraphics[width=3.5in]{figure/fig31.png}%
-\label{fig_3-1}}
-\vfil
-\subfloat[Deep learning algorithm]{\includegraphics[width=3.5in]{figure/fig32.png}%
-\label{fig_3-2}}
-\centering
-\caption{Comparison of calculation results using upwind style and deep learning algorithm}
+\includegraphics[width=3.5in]{figure/fig3.png}
+\caption{Rereference Matrix}
 \label{fig_3}
 \end{figure}
 
+在所以在T-OPT的基础上优化，得到了P-OPT策略。为了提升效率，T-OPT创建了一种新的数据结构，叫做Rereference矩阵，矩阵的每一行是一个缓存行，每一列代表一个时间周期，矩阵的每个元素，代表的是访问节点时的时间周期，与下一次访问该节点所在时间周期之间的距离。比如在$E_{0}$这个时间周期中，$C_{0}$处的值为1，代表下一次访问是在$E_{1}$，$C_{1}$处的值为2，代表下一次访问是在$E_{2}$。
+P-OPT突破了T-OPT在运行时间和缓存竞争中的局限性。运行时间方面，P-OPT在Rereference矩阵的每一行存储下一次访问的信息，获取这些信息的代价是$O(1)$。缓存竞争方面，在每个时间周期中，我们只要存储矩阵的一列就足够了，大大减少了缓存竞争。
 
-Ideally, the result of the solution should be a triangular signal shape distributed in different spatial locations at different times. As can be seen from Fig.\ref{fig_3}, due to the introduction of artificial stickiness\cite{LuJinfu2004}, the upwind style "smoothes" the sharp corners of the signal, and the signal strength is also weakened over time. In contrast, the results based on the deep learning algorithm in this paper better preserve the shape and intensity of the initial signal.
-
-
-\subsection{Boundary Value Problem of Two-Dimensional Laplace Equation}
-
-The two-dimensional Laplace equation is a typical elliptic partial differential equation. Without loss of generality, it is assumed here that it has the following form:
+对多个应用程序和输入的评估表明，P-OPT 提高了图应用程序的缓存局部性，与 LRU 替换相比，平均性能提高了$33\%$（最大$56\%$）。
 
 
-\begin{equation}
-\dfrac{\partial^2 u}{\partial{x^2}} + \dfrac{\partial^2{u}}{\partial{u^2}} = 0
-\label{equ_15}
-\end{equation}
+\subsection{Ripple: Profile-Guided Instruction Cache Replacement for Data Center Applications}
 
-From a physical point of view, this equation describes a steady-state phenomenon, such as the temperature distribution inside a metal plate given the boundary temperature. The boundary conditions of elliptic partial differential equations have the following three formulations: 
-\begin{enumerate}
-\item[(1)] Dirichlet boundary value condition, that is, the value $U_{1}(x,y)$ of u is given on the given boundary; 
-\item[(2)] Neumann boundary value condition, that is, the normal derivative value of u, $\dfrac{\partial u}{\partial n} = U_{2}(x,y)$ is given on the given boundary;
-\item[(3)] Robbin boundary value condition, that is, $\dfrac{\partial u}{\partial n} + u = U_{3}(x,y)$.
-\end{enumerate}
-We take the Dirichlet boundary value condition.Given the following computational domain boundaries and boundary value conditions:
+\hspace{0.5em}现代的数据中心应用具有深度的软件堆栈，面临的指令工作集大小比当今处理其支持的指令缓存大小大几个数量级。经常导致指令缓存未命中，使得执行过程出现明显的停顿,因此提出了一种新的缓存替换策略，Ripple\cite{khan2021ripple}。
+为了减轻指令缓存未命中的影响，指令缓存未命中缓解机制已经被广泛研究，一些先前的工作提出了分支预测、硬件上的指令预提取器。尽管这些技术很有前景，但它们在现在的处理器上实现，还需要额外的硬件支持，并且未能达到最理想的情况，也就是不会发生指令未命中。
 
-
-\begin{equation}
-\left\{
-\begin{aligned}
-& 0 \leq x \leq 2,0 \leq y \leq 2 \\
-&u(0,y) = 0,u(2,y) = y(2-y) \\
-&u(x,0) = 0,u(x,2) = \left\{ 
-\begin{aligned}
-&2-x,&x > 1\\
-&x,&x<1 \\
-\end{aligned} 
-.\right. \\
-\end{aligned}
-\right.
-\label{equ_16}
-\end{equation}
-The algorithm in this paper and the five-point difference scheme are used to solve the problem, respectively. The qualitative comparison of the overall distribution cloud map and the quantitative comparison of the results at different locations are shown in Fig.\ref{fig_4}. It can be seen that the algorithm in this paper has comparable accuracy to the five-point difference scheme.
-
-
-
+Ripple,是一种新颖的配置文件引导替换技术，可仔细识别导致指令缓存未命中的程序上下文，并努力替换将被理想策略替换的缓存行。Ripple 的操作与底层指令缓存替换策略无关。它会在链接时在适当的程序位置谨慎地注入“缓存行替换”指令，以协助在硬件中实施任意替换策略。 Ripple 不会引入额外的硬件开销，并且可以很容易地在即将发布的处理器上实现。 Ripple 使现有的替换策略能够进一步缩小性能差距以实现理想的 指令缓存替换性能。
 
 \begin{figure}[!t]
 \centering
-\subfloat[Qualitative comparison]{\includegraphics[width=3.5in]{figure/fig41.jpg}%
-\label{fig_4-1}}
-\vfil
-\subfloat[Qualitative comparison]{\includegraphics[width=3.5in]{figure/fig42.jpg}%
-\label{fig_4-2}}
-\caption{Numerical solution results of the two-dimensional Laplace equation}
+\includegraphics[width=3.5in]{figure/fig4.png}
+\caption{Ripple}
 \label{fig_4}
 \end{figure}
 
-Further, this subsection explores the influence of the number and width of the hidden layers (number of neurons in each layer) of the deep neural network on the computational results. For the calculation of the relative error percentage, the result of the five-point difference format is selected as the exact solution. The results are shown in Table\ref{table_1}. It can be seen that for the two-dimensional Laplace equation, as the width of the hidden layer increases, the prediction accuracy of the neural network increases first and then decreases, while with the increase of the number of hidden layers, the prediction accuracy decreases. This shows that when using a neural network to predict the numerical solution of the two-dimensional Laplace equation boundary value problem, using more neurons does not necessarily lead to an improvement in the prediction accuracy.
+图\ref{fig_4}显示了 Ripple 的设计思路。第一步，在应用运行时，Ripple 使用基于硬件的高效控制流跟踪支持，例如Intel PT或者Last Branch Record，在线分析程序的基础块执行序列。 第二步，使用理想的指令缓存替换策略离线分析程序跟踪以计算一组线索块。线索块是一个基本块，其执行几乎总是导致理想的缓存行被替换。 Ripple策略背后的关键思想是模仿一种理想的策略，该策略将替换未来最长时间不会被访问的缓存行。第三步，在重新编译期间，Ripple 在线索块中注入指令，替换那些缓存行。
+
+我们使用九个流行的数据中心应用程序评估 Ripple，并证明 Ripple 支持任何替换策略来实现更接近理想指令缓存的加速。具体来说，由于平均 $19\%$（最高$28.6\%$）的指令缓存未命中情况减少，Ripple 比之前的工作实现了$1.6\%$（最高$2.13\%$）的平均性能提升。
 
 
 
-\begin{table}
-\centering
-\caption{The relative error percentage of the two-dimensional Laplace equation neural network predicting the numerical solution}
-\begin{tabular}{|c|*{3}{c}|}
-\hline
-\diagbox{Number of Layers}{Width of Layer} & 10 & 20 & 20 \\
-\hline
-2 & 1.4e-2 & 1.1e-2 & 1.7e-2 \\
-4 & 3.1e-2 & 1.6e-2 & 4.1e-2 \\
-6 & 3.9e-2 & 3.6e-2 & 4.0e-2 \\
-8 & 3.6e-2 & 3.6e-2 & 6.7e-2 \\
-\hline
+\subsection{RLR： Designing a Cost-Effective Cache Replacement Policy using Machine Learning}
 
-\end{tabular}
-\label{table_1}
-\end{table}
-
-\subsection{the Initial Boundary Value Problem of One-Dimensional Diffusion Equation}
-
-Diffusion equation is a common parabolic partial differential equation in applications. It has obvious physical background, such as the diffusion process, heat transfer process and wave propagation process between substances with different concentrations. The partial differential equation shown in equation (\ref{equ_17}):
-
-\begin{equation}
-\dfrac{\partial u}{\partial t} + \alpha \dfrac{\partial^2{u}}{\partial{x^2}} = 0
-\label{equ_17}
-\end{equation}
-
-Equation (\ref{equ_17}) is a typical form of the diffusion equation. where a is a non-zero constant. Given initial and boundary conditions, the partial differential equation above has a unique solution.
-
-Choose $a=-1$ and given the following initial and boundary conditions:
+人们已经进行了广泛的研究来改进缓存替换策略，但设计一种有效的缓存替换策略来降低硬件开销仍然是一项具有挑战性和耗时的任务。鉴于人们对应用机器学习来解决具有挑战性的计算机体系结构设计问题的兴趣激增，我们使用机器学习作为离线工具来设计具有成本效益的缓存替换策略。我们证明机器学习能够指导和加速缓存替换策略的生成，该策略可与最先进的手工策略相媲美。
 
 
-\begin{equation}
-\left\{
-\begin{aligned}
-&u(x,0) = \sin{x},0<x<1 \\
-&u(0,t) = 0 \\
-&u(1,t) = 1 \\
-\end{aligned}
-\right.
-\label{equ_18}
-\end{equation}
-
-The algorithm in this paper and the Crank-Nicolson format are used to solve the problem. The overall distribution cloud map predicted by the neural network and the quantitative comparison of the results at different times are shown in Fig.\ref{fig_5}. Among them, Fig.\ref{fig_5-1} is the cloud map of the predicted value of the neural network, and the white line marks the moment of quantitative comparison. It can be seen that the algorithm in this paper has comparable precision with the Crank-Nicolson format.
+鉴于行为的影响是符合马尔可夫的，强化学习有可能学习理论上的最优策略。由于强化学习能够适应环境的动态变化并处理所选动作的重要后果，因此非常适合缓存替换问题。我们将缓存替换视为马尔可夫决策过程(Markov Decision Process,MDP)，其中代理器（agent）做出替换决策。给定缓存状态，代理器的替换决策将缓存移动到新状态。根据替换决策与 BELADY替换策略的接近程度，分配给代理器一定的奖励，接近程度越高，奖励越高。在我们的框架中，我们使用强化学习算法训练神经网络来学习替换策略。尽管学习到的策略可能是高效的，但由于功率、面积和时序限制，我们不想在硬件中构建神经网络。相反，我们分析神经网络并使用从神经网络中获得的见解来推导一种可以在硬件中实现的替代算法。
 
 
 \begin{figure}[!t]
 \centering
-\subfloat[Neural network predicted value cloud map]{\includegraphics[width=3.5in]{figure/fig51.jpg}%
-\label{fig_5-1}}
-\vfil
-\subfloat[Quantitative comparison]{\includegraphics[width=3.5in]{figure/fig52.jpg}%
-\label{fig_5-2}}
-\caption{Numerical solution results of one-dimensional diffusion equation}
+\includegraphics[width=3.5in]{figure/fig5.png}
+\caption{Simulation framework overview}
 \label{fig_5}
 \end{figure}
 
-The relative error is calculated using the Crank-Nicolson format result as the exact solution. It can be seen from the results in Table \ref{table_2} that for the one-dimensional diffusion equation, the influence of the number of layers and depth of the hidden layer of the deep neural network on the prediction accuracy is similar to the results of predicting the two-dimensional Laplace equation.
+算法的整体流程图如图\ref{fig_5}所示，
+\begin{enumerate}
+\item 命中的话，就进行下一次迭代。
+\item 未命中的话，cache simulator就会和agent交互，来进行一次缓存置换。
+\item 关于未命中的而信息以及命中集合的信息都被通过state vector的方式送给agent。
+\item agent会评估state vector并为n路关联缓存生成一个n维的输出向量，其中的每一维向量表示一个cache set的通路，他的值反应其重要性。
+\item cache simulator会根据输出向量进行一个置换策略，同时一个反馈会被发送给agent。反馈的评价指标是选择换出的内存在短期内是否会被调用。
+
+\end{enumerate}
+
+下面定义一些特性，并举与这些特性设计了新的策略，能够在硬件中以可接受的开销实现。
+\begin{enumerate}
+\item 预用距离(preuse distance)：我们将预用距离定义为缓存行过去的重用距离。它被计算为缓存行的最后一次访问和当前访问之间的集合访问次数。访问预用和行预用特征都显示出很高的权重。
+\item 最新访问类型(Line Last Access Type)：缓存行的Last Access type定义为最新的访问类型。预取的缓存行具有最短的缓存生命周期，并且代理器更愿意比其他访问类型的缓存行更早地替换它们。
+\item 总调用次数(Line Hits Since Insertion): Hits since insertion告诉我们一个缓存行从被带入缓存后被访问了多少次。代理器倾向于替换命中次数较少的缓存行。在设计缓存替换策略时，我们可以通过保留命中率更高的缓存行来模仿这种行为。
+\item 调用频率(Recency)：Recency是指一个缓存行在一个集合中的相对访问顺序。 Recency 值的范围从零到(Set Associativity − 1)；零表示最近最少使用的缓存行，(Set Associativity − 1) 表示最近使用的缓存行。例如，LRU 替换策略替换最近值为0的缓存行。
+\end{enumerate}
+
+在RLR\cite{sethumurugan2021designing}中，重用距离是根据缓存行的预使用距离预测的。年龄小于预测重用距离的缓存行受到保护。此外，缓存行根据其先前访问的类型以及缓存行是否已收到命中来确定优先级。当做出替换决定时，集合中的高速缓存行被分配优先级。优先级是根据缓存行的年龄、以前的访问和命中率计算的。在缓存未命中时，优先级最低的缓存行将被逐出。
+
+几个重要的优先级如下：
+\begin{itemize}
+\item 年龄优先级（Age priority）：每个缓存行都增加了一个年龄计数器，该计数器计算该行在集合访问中的年龄,即自该行的最后一次访问以来该集合被访问了多少次，记为$P_{age}$。
+\item 类型优先级（Type priority）：每个缓存行都增加了一个类型寄存器，指示其先前的访问是否是预取，记为$P_{type}$。
+\item 命中优先级（Hit priority）：每个缓存行都增加了一个命中寄存器，该寄存器在缓存行被命中时设置，记为$P_{hit}$。
+
+\end{itemize}
+
+每个缓存行的优先级被计算为上述优先级的加权和，$P_{line} = 8 P_{age} + P_{type} + P_{hit}$。
+
+在这项工作中，我们使用强化学习来学习缓存替换策略。在分析学习到的模型之后，我们能够专注于一些可能影响系统性能的关键特征。使用强化学习提供的见解，我们成功地推导出了一个新的缓存替换策略强化学习替换(Replacment Learned Replacement,RLR)。与最先进的策略相比，RLR具有较低的硬件开销，无需修改处理器的控制和数据路径即可传播程序计数器等信息。平均而言，RLR 比 LRU 将单核和四核系统性能提高了$3.25\%$和$4.86\%$，2MB 末级缓存 (LLC) 的开销为 16.75KB，8MB LLC 的开销为 67KB。
 
 
-\begin{table}
+\subsection{GLider: Applying Deep Learning to the Cache Replacement Problem}
+
+尽管深度学习在许多领域都取得了成功，但由于这些模型大且慢，因此不太适合用于硬件预测器。现代微处理器包括许多硬件预测其，用于分支预测、缓存替换、数据提取等，而深度学习提供了一种训练这些预测器的办法，所以可以使用深度学习来帮助设计新的缓存替换策略。对于缓存替换，强大的 LSTM 学习模型可以在离线设置中提供比当前硬件预测器更好的准确性。通过执行分析来解释这个 LSTM 模型，得出一个关键见解，使我们能够设计一个简单的在线模型，该模型与离线模型的准确性相匹配，并且成本降低了几个数量级。
+
+这种替换策略建立在 Hawkeye 缓存替换策略的基础上，该策略将缓存替换描述为一个监督学习问题，其中根据过去缓存访问的最佳缓存解决方案训练预测器。
+
+\begin{figure}[!t]
 \centering
-\caption{The relative error percentage of the one-dimensional diffusion equation neural network predicting the numerical solution}
+\includegraphics[width=3.5in]{figure/fig6.png}
+\caption{Overview of the Hawkeye Cache}
+\label{fig_6}
+\end{figure}
 
-\begin{tabular}{|c|*{3}{c}|}
-\hline
-\diagbox{Number of Layers}{Width of Layer} & 10 & 20 & 40 \\
-\hline
-2 & 7.6e-3 & 6.5e-3 & 9.9e-3 \\
-4 & 8.5e-3 & 9.5e-3 & 9.2e-3 \\
-6 & 9.9e-3 & 9.9e-3 & 1.1e-2 \\
-8 & 1.3e-2 & 1.1e-2 & 1.0e-2 \\
-\hline
-\end{tabular}
-\label{table_2}
-\end{table}
+
+图\ref{fig_6}展示了Hawkeye替换策略的整体结构。它的主要组件是 OPTgen，它模拟最优解的行为以生成训练标签，以及用来学习最优解的Hawkeye预测器。Hawkeye预测器是一个二元分类器，其目标是预测内存访问加载的数据是否有可能被最优算法缓存。缓存友好数据以高优先级插入缓存，缓存厌恶数据以低优先级插入。Hawkeye使用PC作为一项功能并维护一个计数器表，以了解给定PC的内存访问是缓存友好型还是缓存厌恶型。虽然Hawkeye缓存替换策略非常成功，但它的简单预测器在一组具有挑战性的基准测试中仅达到 $72.4\%$ 的准确率。
+
+我们的解决方案提高了Hawkeye的准确性。由于Hawkeye从最优缓存解决方案中学习，因此Hawkeye预测器准确性的改进导致更接近 Belady 最优解决方案的替换决策，从而导致更高的缓存命中率。为了提高预测器的准确性，我们注意到现代替换策略使用有限的程序上下文（PC）来学习重复缓存行为。例如，如果给定 PC 加载的行倾向于缓存友好，那么这些策略将预测同一台PC未来的访问也将缓存友好。我们的工作旨在通过利用更丰富的动态程序上下文来提高预测准确性，特别是导致当前内存访问的过去内存访问序列。因此，我们将缓存替换制定为序列标记问题，其中目标是使用二进制标签标记序列中的每个访问。更具体地说，输入是由他们的PC识别的一系列负载，目标是了解PC是否倾向于访问缓存友好或缓存厌恶的线路。
+
+我们选择通过他们的 PC 而不是他们的内存地址来识别负载有两个原因。首先，PC 的数量较少，因此它们比内存地址重复的频率更高，从而加快了训练速度。其次，更重要的是，LSTM 的大小和学习时间都与唯一输入的数量成正比，并且由于唯一地址的数量比LSTM的典型输入大 100-1000 倍，因此使用内存地址对于 LSTM 是不可行的。
+
+下面介绍用于缓存替换的LSTM模型，模型分为3部分:(1) 无约束离线缓存模型。首先，我们设计了一个离线训练的无约束缓存模型。我们的离线模型使用具有注意机制的 LSTM，该机制可识别输入序列中的重要PC，该模型明显优于最先进的鹰眼预测器。 (2)离线分析。其次，我们分析了注意力层并发现了一个重要的见解：缓存决策主要取决于是否存在少量内存访问，而不是完整的有序序列。因此，我们可以更紧凑地编码我们的输入特征（PC 的历史），以便可以通过简单的硬件友好线性模型在硬件中轻松识别重要的内存访问。 (3) 实用的在线模型。第三，我们使用我们分析的结果来构建一个实用的 SVM 模型，记作ISVM，该模型经过在线训练以识别少数重要的PC，ISVM 模型的精度接近于更大更慢的 LSTM，它的在线版本本质上是一个感知器。
+
+Glider 缓存替换策略由 ISVM 模型和 k-sparse 特征组成\cite{shi2019applying}。我们对来自 SPEC 2006、SPEC 2017 和 GAP（图形处理）基准套件的一组 33 个内存密集型程序进行评估。在单核设置中，Glider 的表现优于第二届缓存替换锦标赛的顶级选手，将 LRU 的未命中率降低了 $8.9\%$，而 Hawkeye 降低了 $7.1\%$，MPPPB 降低了 $6.5\%$，SHiP++ 降低了 $7.5\%$。在四核系统上，Glider 将 IPC 比 LRU 提高了 $14.7\%$，而改进了 $13.6\%$（Hawkeye）、$13.2\%$（MPPPB）和 $11.4\%$（SHiP++）。
+
+
+
+
 
 \section{Conclusion}
 
-We propose a deep learning-based method for solving partial differential equations. For three typical problems of hyperbolic, elliptic and parabolic partial differential equations, the finite difference scheme and the method in this paper are used to solve them. The comparison of the results shows that the algorithm in this paper has better solution accuracy, and it can overcome the disadvantage of artificial stickiness introduced by the upwind style. In addition, the algorithm of this paper does not need special treatment for different types of partial differential equations, that is, the algorithm framework of this paper has wider applicability.
+本文讲述了四种缓存替换策略。
 
-The above advantages of this method do not mean that it can replace the mature traditional methods in engineering applications at present. The reason is that when solving partial differential equations based on deep neural networks, the law of error is not clear. In addition, the use of deep learning methods to solve partial differential equations requires a relatively clear definition of the boundary conditions or initial conditions of the problem, otherwise there may be problems that the boundary cannot be captured or the transient solution is inaccurate. In view of the above two aspects, in the future, we need to conduct in-depth research on the mathematical nature of how deep neural networks converge to the solutions of partial differential equations during the training process.
+\begin{itemize}
+\item P-OPT。
+P-OPT的主要思想是图的转置简洁地编码了所有图数据的下一个参考信息，从而为图分析工作负载启用了转置驱动的 Belady 的 MIN 替换策略 (T-OPT)。我们介绍了 P-OPT，它是 T-OPT 的一种实际实现，它利用量化来有效地存储和访问下一个参考信息，以做出更好的替换决策。对一系列工作负载和输入图的评估表明，与之前最先进的图分析替换策略和局部优化相比，P-OPT 提供了显着的性能和局部改进。
+\item Ripple。
+现代数据中心应用程序具有大量指令占用空间，导致大量 I-cache 未命中。尽管许多先前的提议旨在减少 I-cache 未命中，但它们仍然达不到理想的缓存。我们调查了为什么现有的 I-cache 未命中缓解机制实现次优加速，并发现广泛研究的指令预取器会导致浪费的预取引起的驱逐，而现有的替换策略无法缓解。为了实现更智能的驱逐，我们提出了 Ripple，这是一种新颖的配置文件引导的替换技术，它使用程序上下文来告知底层替换策略有关有效替换决策的信息。 Ripple 识别导致 I-cache 未命中的程序上下文，并在链接时在合适的程序位置谨慎地注入“缓存行驱逐”指令。我们使用九个流行的数据中心应用程序评估了 Ripple，并证明它与替换策略无关，即它使任何替换策略都能实现比理想 I-cache 快 $44\%$ 的加速。
+\item RLR。
+机器学习在架构设计探索中很有用。然而，人类的专业知识对于破译 ML 模型、进行设计权衡和寻找实用的解决方案仍然至关重要。在这项工作中，为了设计一种具有成本效益的缓存替换策略，我们使用强化学习来指导和加快我们的设计。我们使用在 LLC 中相对容易获得的特征来训练 RL 代理。考虑到将 PC 信息传播到 LLC 的复杂性，我们有意将 PC 排除在功能集中之外。在训练代理神经网络后，我们通过分析神经网络权重从大型特征集中识别重要特征。基于从神经网络中得出的见解，我们成功地推导出了一个新的策略以进一步减少硬件开销。总体而言，拟议的更换政策优于 DRRIP（不基于 PC 的政策），并实现了与现有基于 PC 的更换政策相当的性能。
+
+
+
+\item Glider。
+当我们考虑将机器学习应用于硬件预测问题时，我们通常会关注学习模型。9 例如，作为一种学习模型，感知器优于饱和计数器表，因为感知器可以有效地组合来自多个输入的结果。事实上，这篇论文提出了一种新的缓存替换策略，它使用 SVM（相当于感知器）来超越最先进的技术。然而，Glider 成功的关键不仅仅是使用感知器——我们不是第一个使用感知器来替换缓存的人。相反，正是将适当的特征与感知器结合使用才使其有效。因此，本文展示了我们如何在离线设置中使用深度学习来获得洞察力，从而改进一组特征，从而预测缓存替换。
+
+更广泛地说，我们设计 Glider 的方法表明，深度学习可以在系统地探索特征和特征表示方面发挥重要作用，这些特征和特征表示可以提高更简单模型（例如感知器和 SVM）的有效性。但是，领域知识对于这种方法的工作至关重要。特别是，领域专家必须适当地表述问题，提供相关特征以构建有效的离线模型，并使用间接方法来解释经过训练的模型。我们的论文说明了这种方法成功的一个实例，但我们希望本文中提出的见解和技术能够激发其他微架构预测问题（例如分支预测、数据预取和值预测）的类似解决方案的设计。
+\end{itemize}
 
 
 
@@ -1211,54 +1006,61 @@ The above advantages of this method do not mean that it can replace the mature t
 % (used to reserve space for the reference number labels box)
 \begin{thebibliography}{10}
 
-\bibitem{ShiZhongci2000}
-石钟慈, \emph{第三种科学方法: 计算机时代的科学计算}.\hskip 1em plus 0.5em minus
-  0.4em\relax 清华大学出版社有限公司, 2000.
 
-\bibitem{LuJinfu2004}
-陆金甫, 关治, \emph{偏微分方程数值解法}.\hskip 1em plus 0.5em minus
-  0.4em\relax 清华大学出版社有限公司, 2004.
+\bibitem{belady1966}
+L.~A. Belady, ``A study of replacement algorithms for a virtual-storage
+  computer,'' \emph{IBM Systems journal}, vol.~5, no.~2, pp. 78--101, 1966.
 
-\bibitem{logan2014}
-J.~D. Logan, \emph{Applied partial differential equations}.\hskip 1em plus
-  0.5em minus 0.4em\relax Springer, 2014.
+\bibitem{karedla1994}
+R.~Karedla, J.~S. Love, and B.~G. Wherry, ``Caching strategies to improve disk
+  system performance,'' \emph{Computer}, vol.~27, no.~3, pp. 38--46, 1994.
 
-\bibitem{chapra1998}
-S.~CHAPRA and R.~P. Canale, ``Numerical methods for engineers: with programing
-  and software applications,'' 1998.
+\bibitem{o1993}
+E.~J. O'neil, P.~E. O'neil, and G.~Weikum, ``The lru-k page replacement
+  algorithm for database disk buffering,'' \emph{Acm Sigmod Record}, vol.~22,
+  no.~2, pp. 297--306, 1993.
 
-\bibitem{kopriva2009}
-D.~A. Kopriva, \emph{Implementing spectral methods for partial differential
-  equations: Algorithms for scientists and engineers}.\hskip 1em plus 0.5em
-  minus 0.4em\relax Springer Science \& Business Media, 2009.
+\bibitem{jain2016back}
+A.~Jain and C.~Lin, ``Back to the future: Leveraging belady's algorithm for
+  improved cache replacement,'' in \emph{2016 ACM/IEEE 43rd Annual
+  International Symposium on Computer Architecture (ISCA)}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE, 2016, pp. 78--89.
 
-\bibitem{wang2017}
-J.-X. Wang, J.~Wu, J.~Ling, G.~Iaccarino, and H.~Xiao, ``A comprehensive
-  physics-informed machine learning framework for predictive turbulence
-  modeling,'' \emph{arXiv preprint arXiv:1701.07102}, 2017.
+\bibitem{khan2021ripple}
+T.~A. Khan, D.~Zhang, A.~Sriraman, J.~Devietti, G.~Pokam, H.~Litz, and
+  B.~Kasikci, ``Ripple: Profile-guided instruction cache replacement for data
+  center applications,'' in \emph{2021 ACM/IEEE 48th Annual International
+  Symposium on Computer Architecture (ISCA)}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2021, pp. 734--747.
 
-\bibitem{duraisamy2015}
-K.~Duraisamy, Z.~J. Zhang, and A.~P. Singh, ``New approaches in turbulence and
-  transition modeling using data-driven techniques,'' in \emph{53rd AIAA
-  Aerospace sciences meeting}, 2015, p. 1284.
+\bibitem{balaji2021p}
+V.~Balaji, N.~Crago, A.~Jaleel, and B.~Lucia, ``P-opt: Practical optimal cache
+  replacement for graph analytics,'' in \emph{2021 IEEE International Symposium
+  on High-Performance Computer Architecture (HPCA)}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2021, pp. 668--681.
 
-\bibitem{ling2016}
-J.~Ling, A.~Kurzawski, and J.~Templeton, ``Reynolds averaged turbulence
-  modelling using deep neural networks with embedded invariance,''
-  \emph{Journal of Fluid Mechanics}, vol. 807, pp. 155--166, 2016.
+\bibitem{sethumurugan2021designing}
+S.~Sethumurugan, J.~Yin, and J.~Sartori, ``Designing a cost-effective cache
+  replacement policy using machine learning,'' in \emph{2021 IEEE International
+  Symposium on High-Performance Computer Architecture (HPCA)}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE, 2021, pp. 291--303.
 
-\bibitem{QiuXipeng2020}
-邱锡鹏, \emph{神经网络与深度学习}.\hskip 1em plus 0.5em minus 0.4em\relax
-  机械工业出版社, 2020.
+\bibitem{shi2019applying}
+Z.~Shi, X.~Huang, A.~Jain, and C.~Lin, ``Applying deep learning to the cache
+  replacement problem,'' in \emph{Proceedings of the 52nd Annual IEEE/ACM
+  International Symposium on Microarchitecture}, 2019, pp. 413--425.
 
-\bibitem{ruder2016}
-S.~Ruder, ``An overview of gradient descent optimization algorithms,''
-  \emph{arXiv preprint arXiv:1609.04747}, 2016.
+\bibitem{wu2011ship}
+C.-J. Wu, A.~Jaleel, W.~Hasenplaugh, M.~Martonosi, S.~C. Steely~Jr, and
+  J.~Emer, ``Ship: Signature-based hit predictor for high performance
+  caching,'' in \emph{Proceedings of the 44th Annual IEEE/ACM International
+  Symposium on Microarchitecture}, 2011, pp. 430--441.
 
-\bibitem{nocedal1980}
-J.~Nocedal, ``Updating quasi-newton matrices with limited storage,''
-  \emph{Mathematics of computation}, vol.~35, no. 151, pp. 773--782, 1980.
-
+\bibitem{beckmann2017maximizing}
+N.~Beckmann and D.~Sanchez, ``Maximizing cache performance under uncertainty,''
+  in \emph{2017 IEEE International Symposium on High Performance Computer
+  Architecture (HPCA)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2017, pp.
+  109--120.
 
 \end{thebibliography}
 

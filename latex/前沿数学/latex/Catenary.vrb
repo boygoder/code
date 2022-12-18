@@ -1,0 +1,24 @@
+\frametitle{求解：$solve（）$,结果可视化：$output\_results（）$}
+\begin{block}{求解器：$SolverBase<Vector Type>$}
+\begin{itemize}
+\item EigenPower,EigenInverse
+\item SolverCG,SolverBicgstab,SolverGMRES,
+\item SolverRelaxation,SolverRichardson,SolverIDR……
+\end{itemize}
+\end{block}
+
+\begin{block}{结果可视化：$DataOut<dim>$}
+\begin{lstlisting}
+#include <deal.II/numerics/data_out.h>
+
+DataOut<2> data_out;
+data_out.attach_dof_handler(dof_handler);
+data_out.add_data_vector(solution, "solution");
+data_out.build_patches();
+std::ofstream output("solution.vtk");
+data_out.write_vtk(output);
+
+//write_dx(),write_eps(),write_gnuplot(),write_povray()……
+\end{lstlisting}
+\end{block}
+

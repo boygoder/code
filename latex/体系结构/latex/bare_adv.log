@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.28)  12 DEC 2022 23:52
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.9.28)  17 DEC 2022 22:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -76,7 +76,7 @@ LaTeX Font Warning: Font shape `TU/ppl/bx/it' undefined
 \IEEEPARstartletwidth=\dimen125
 \c@IEEEbiography=\count94
 \@IEEEtranrubishbin=\box28
-) (d:/texlive/texlive/2019/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
+) (d:/texlive/texlive/2019/texmf-dist/tex/latex/ctex/ctex.sty
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2019-04-06 L3 programming layer (loader) 
 
@@ -234,32 +234,64 @@ File: l3xdvipdfmx.def 2019-04-06 v L3 Experimental driver: xdvipdfmx
 \g__driver_image_int=\count178
 \g__driver_pdf_object_int=\count179
 ))
+
+LaTeX Warning: You have requested package `CTEX',
+               but the package provides `ctex'.
+
+Package: ctex 2019/04/07 v2.4.15 Chinese adapter in LaTeX (CTEX)
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2019-03-05 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count180
+\g__xparse_grabber_int=\count181
+\l__xparse_m_args_int=\count182
+\l__xparse_v_nesting_int=\count183
+)
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2019-03-05 LaTeX2e option processing using LaTeX3 keys
+) (d:/texlive/texlive/2019/texmf-dist/tex/latex/ctex/ctexhook.sty
+Package: ctexhook 2019/04/07 v2.4.15 Document and package hooks (CTEX)
+)
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/ctex/ctexpatch.sty
+Package: ctexpatch 2019/04/07 v2.4.15 Patching commands (CTEX)
+)
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/base/fix-cm.sty
+Package: fix-cm 2015/01/14 v1.1t fixes to LaTeX
+
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+))
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/ms/everysel.sty
+Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
+)
+\l__ctex_tmp_int=\count184
+\l__ctex_tmp_box=\box47
+\l__ctex_tmp_dim=\dimen158
+\g__ctex_section_depth_int=\count185
+\g__ctex_font_size_int=\count186
+
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/ctex/config/ctexopts.cfg
+File: ctexopts.cfg 2019/04/07 v2.4.15 Option configuration file (CTEX)
+)
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/ctex/engine/ctex-engine-xetex.def
+File: ctex-engine-xetex.def 2019/04/07 v2.4.15 XeLaTeX adapter (CTEX)
+(d:/texlive/texlive/2019/texmf-dist/tex/xelatex/xecjk/xeCJK.sty
 Package: xeCJK 2019/04/07 v3.7.2 Typesetting CJK scripts with XeLaTeX
 
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.st
 y
 Package: xtemplate 2019-03-05 L3 Experimental prototype document functions
-\l__xtemplate_tmp_dim=\dimen158
-\l__xtemplate_tmp_int=\count180
+\l__xtemplate_tmp_dim=\dimen159
+\l__xtemplate_tmp_int=\count187
 \l__xtemplate_tmp_muskip=\muskip16
 \l__xtemplate_tmp_skip=\skip50
-) (d:/texlive/texlive/2019/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2019-03-05 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count181
-\g__xparse_grabber_int=\count182
-\l__xparse_m_args_int=\count183
-\l__xparse_v_nesting_int=\count184
 )
-(d:/texlive/texlive/2019/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2019-03-05 LaTeX2e option processing using LaTeX3 keys
-)
-\l__xeCJK_tmp_int=\count185
-\l__xeCJK_tmp_box=\box47
-\l__xeCJK_tmp_dim=\dimen159
+\l__xeCJK_tmp_int=\count188
+\l__xeCJK_tmp_box=\box48
+\l__xeCJK_tmp_dim=\dimen160
 \l__xeCJK_tmp_skip=\skip51
-\g__xeCJK_space_factor_int=\count186
-\l__xeCJK_begin_int=\count187
-\l__xeCJK_end_int=\count188
+\g__xeCJK_space_factor_int=\count189
+\l__xeCJK_begin_int=\count190
+\l__xeCJK_end_int=\count191
 \c__xeCJK_CJK_class_int=\XeTeXcharclass1
 \c__xeCJK_FullLeft_class_int=\XeTeXcharclass2
 \c__xeCJK_FullRight_class_int=\XeTeXcharclass3
@@ -269,68 +301,68 @@ Package: l3keys2e 2019-03-05 LaTeX2e option processing using LaTeX3 keys
 \c__xeCJK_CM_class_int=\XeTeXcharclass7
 \c__xeCJK_HangulJamo_class_int=\XeTeXcharclass8
 \l__xeCJK_last_skip=\skip52
-\g__xeCJK_node_int=\count189
-\c__xeCJK_CJK_node_dim=\dimen160
-\c__xeCJK_CJK-space_node_dim=\dimen161
-\c__xeCJK_default_node_dim=\dimen162
-\c__xeCJK_default-space_node_dim=\dimen163
-\c__xeCJK_CJK-widow_node_dim=\dimen164
-\c__xeCJK_normalspace_node_dim=\dimen165
+\g__xeCJK_node_int=\count192
+\c__xeCJK_CJK_node_dim=\dimen161
+\c__xeCJK_CJK-space_node_dim=\dimen162
+\c__xeCJK_default_node_dim=\dimen163
+\c__xeCJK_default-space_node_dim=\dimen164
+\c__xeCJK_CJK-widow_node_dim=\dimen165
+\c__xeCJK_normalspace_node_dim=\dimen166
 \l__xeCJK_ccglue_skip=\skip53
 \l__xeCJK_ecglue_skip=\skip54
 \l__xeCJK_punct_kern_skip=\skip55
-\l__xeCJK_last_penalty_int=\count190
-\l__xeCJK_last_bound_dim=\dimen166
-\l__xeCJK_last_kern_dim=\dimen167
-\l__xeCJK_widow_penalty_int=\count191
+\l__xeCJK_last_penalty_int=\count193
+\l__xeCJK_last_bound_dim=\dimen167
+\l__xeCJK_last_kern_dim=\dimen168
+\l__xeCJK_widow_penalty_int=\count194
 
 Package xtemplate Info: Declaring object type 'xeCJK/punctuation' taking 0
 (xtemplate)             argument(s) on line 2352.
 
-\l__xeCJK_fixed_punct_width_dim=\dimen168
-\l__xeCJK_mixed_punct_width_dim=\dimen169
-\l__xeCJK_middle_punct_width_dim=\dimen170
-\l__xeCJK_fixed_margin_width_dim=\dimen171
-\l__xeCJK_mixed_margin_width_dim=\dimen172
-\l__xeCJK_middle_margin_width_dim=\dimen173
-\l__xeCJK_bound_punct_width_dim=\dimen174
-\l__xeCJK_bound_margin_width_dim=\dimen175
-\l__xeCJK_margin_minimum_dim=\dimen176
-\l__xeCJK_kerning_total_width_dim=\dimen177
-\l__xeCJK_same_align_margin_dim=\dimen178
-\l__xeCJK_different_align_margin_dim=\dimen179
-\l__xeCJK_kerning_margin_width_dim=\dimen180
-\l__xeCJK_kerning_margin_minimum_dim=\dimen181
-\l__xeCJK_bound_dim=\dimen182
-\l__xeCJK_reverse_bound_dim=\dimen183
-\l__xeCJK_minimum_bound_dim=\dimen184
-\l__xeCJK_kerning_margin_dim=\dimen185
-\l__xeCJK_original_margin_dim=\dimen186
-\g__xeCJK_family_int=\count192
-\l__xeCJK_fam_int=\count193
-\g__xeCJK_fam_allocation_int=\count194
-\l__xeCJK_verb_case_int=\count195
+\l__xeCJK_fixed_punct_width_dim=\dimen169
+\l__xeCJK_mixed_punct_width_dim=\dimen170
+\l__xeCJK_middle_punct_width_dim=\dimen171
+\l__xeCJK_fixed_margin_width_dim=\dimen172
+\l__xeCJK_mixed_margin_width_dim=\dimen173
+\l__xeCJK_middle_margin_width_dim=\dimen174
+\l__xeCJK_bound_punct_width_dim=\dimen175
+\l__xeCJK_bound_margin_width_dim=\dimen176
+\l__xeCJK_margin_minimum_dim=\dimen177
+\l__xeCJK_kerning_total_width_dim=\dimen178
+\l__xeCJK_same_align_margin_dim=\dimen179
+\l__xeCJK_different_align_margin_dim=\dimen180
+\l__xeCJK_kerning_margin_width_dim=\dimen181
+\l__xeCJK_kerning_margin_minimum_dim=\dimen182
+\l__xeCJK_bound_dim=\dimen183
+\l__xeCJK_reverse_bound_dim=\dimen184
+\l__xeCJK_minimum_bound_dim=\dimen185
+\l__xeCJK_kerning_margin_dim=\dimen186
+\l__xeCJK_original_margin_dim=\dimen187
+\g__xeCJK_family_int=\count195
+\l__xeCJK_fam_int=\count196
+\g__xeCJK_fam_allocation_int=\count197
+\l__xeCJK_verb_case_int=\count198
 \l__xeCJK_verb_exspace_skip=\skip56
-(d:/texlive/texlive/2019/texmf-dist/tex/latex/fontspec/fontspec.sty
+ (d:/texlive/texlive/2019/texmf-dist/tex/latex/fontspec/fontspec.sty
 Package: fontspec 2019/03/15 v2.7c Font selection for XeLaTeX and LuaLaTeX
 
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
 Package: fontspec-xetex 2019/03/15 v2.7c Font selection for XeLaTeX and LuaLaTe
 X
-\l__fontspec_script_int=\count196
-\l__fontspec_language_int=\count197
-\l__fontspec_strnum_int=\count198
-\l__fontspec_tmp_int=\count199
-\l__fontspec_tmpa_int=\count266
-\l__fontspec_tmpb_int=\count267
-\l__fontspec_tmpc_int=\count268
-\l__fontspec_em_int=\count269
-\l__fontspec_emdef_int=\count270
-\l__fontspec_strong_int=\count271
-\l__fontspec_strongdef_int=\count272
-\l__fontspec_tmpa_dim=\dimen187
-\l__fontspec_tmpb_dim=\dimen188
-\l__fontspec_tmpc_dim=\dimen189
+\l__fontspec_script_int=\count199
+\l__fontspec_language_int=\count266
+\l__fontspec_strnum_int=\count267
+\l__fontspec_tmp_int=\count268
+\l__fontspec_tmpa_int=\count269
+\l__fontspec_tmpb_int=\count270
+\l__fontspec_tmpc_int=\count271
+\l__fontspec_em_int=\count272
+\l__fontspec_emdef_int=\count273
+\l__fontspec_strong_int=\count274
+\l__fontspec_strongdef_int=\count275
+\l__fontspec_tmpa_dim=\dimen188
+\l__fontspec_tmpb_dim=\dimen189
+\l__fontspec_tmpc_dim=\dimen190
 
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
@@ -350,12 +382,104 @@ LaTeX Info: Redefining \emph on input line 4121.
 (d:/texlive/texlive/2019/texmf-dist/tex/xelatex/xecjk/xeCJK.cfg
 File: xeCJK.cfg 2019/04/07 v3.7.2 Configuration file for xeCJK package
 ))
+(d:/texlive/texlive/2019/texmf-dist/tex/xelatex/xecjk/xeCJKfntef.sty
+Package: xeCJKfntef 2019/04/07 v3.7.2 xeCJK font effect
+
+(d:/texlive/texlive/2019/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box49
+\UL@hyphenbox=\box50
+\UL@skip=\skip57
+\UL@hook=\toks15
+\UL@height=\dimen191
+\UL@pe=\count276
+\UL@pixel=\dimen192
+\ULC@box=\box51
+Package: ulem 2012/05/18
+\ULdepth=\dimen193
+)
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/cjk/texinput/CJKfntef.sty
+Package: CJKfntef 2015/04/18 4.8.4
+\CJK@fntefSkip=\skip58
+\CJK@nest=\count277
+\CJK@fntefDimen=\dimen194
+\CJK@underdotBox=\box52
+\CJK@ULbox=\box53
+\CJK@underanyskip=\dimen195
+)
+\l__xeCJK_space_skip=\skip59
+\c__xeCJK_ulem-begin_node_dim=\dimen196
+\c__xeCJK_null_box=\box54
+\l__xeCJK_fntef_box=\box55
+\l__xeCJK_under_symbol_box=\box56
+\c__xeCJK_filll_skip=\skip60
+)
+\ccwd=\dimen197
+\l__ctex_ccglue_skip=\skip61
+)
+\l__ctex_ziju_dim=\dimen198
+
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/zhnumber/zhnumber.sty
+Package: zhnumber 2019/04/07 v2.7 Typesetting numbers with Chinese glyphs
+\l__zhnum_scale_int=\count278
+
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/zhnumber/zhnumber-utf8.cfg
+File: zhnumber-utf8.cfg 2019/04/07 v2.7 Chinese numerals with UTF8 encoding
+))
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/ctex/scheme/ctex-scheme-chinese.d
+ef
+File: ctex-scheme-chinese.def 2019/04/07 v2.4.15 Chinese scheme for generic (CT
+EX)
+ (d:/texlive/texlive/2019/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg
+File: ctex-name-utf8.cfg 2019/04/07 v2.4.15 Caption with encoding UTF8 (CTEX)
+))
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-windows
+.def
+File: ctex-fontset-windows.def 2019/04/07 v2.4.15 Windows fonts definition (CTE
+X)
+
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-windows
+new.def
+File: ctex-fontset-windowsnew.def 2019/04/07 v2.4.15 Windows fonts definition f
+or Vista or later version (CTEX)
+
+Package fontspec Info: Could not resolve font "KaiTi/B" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Could not resolve font "SimHei/I" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Could not resolve font "SimSun/BI" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Font family 'SimSun(0)' created for font 'SimSun' with
+(fontspec)             options
+(fontspec)             [Script={CJK},BoldFont={SimHei},ItalicFont={KaiTi}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"SimSun/OT:script=hani;language=DFLT;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (bx/n) with NFSS spec.:
+(fontspec)             <->"SimHei/OT:script=hani;language=DFLT;"
+(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"KaiTi/OT:script=hani;language=DFLT;"
+(fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
+
+))) (d:/texlive/texlive/2019/texmf-dist/tex/latex/ctex/config/ctex.cfg
+File: ctex.cfg 2019/04/07 v2.4.15 Configuration file (CTEX)
+)
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/diagbox/diagbox.sty
 Package: diagbox 2016/12/28 v2.2 Making table heads with diagonal lines
 
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks15
+\KV@toks@=\toks16
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/pict2e/pict2e.sty
 Package: pict2e 2016/02/05 v0.3b Improved picture commands (HjG,RN,JT)
@@ -376,10 +500,10 @@ File: p2e-xetex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-\pIIe@GRAPH=\toks16
-\@arclen=\dimen190
-\@arcrad=\dimen191
-\@tempdimd=\dimen192
+\pIIe@GRAPH=\toks17
+\@arclen=\dimen199
+\@arcrad=\dimen256
+\@tempdimd=\dimen257
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/fp/fp.sty
 Package: fp 1995/04/02
@@ -387,19 +511,19 @@ Package: fp 1995/04/02
 `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/fp/defpattern.sty
 Package: defpattern 1994/10/12
-\actioncount=\count273
+\actioncount=\count279
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/fp/fp-basic.sty
 Package: fp-basic 1996/05/13
-\FP@xs=\count274
-\FP@xia=\count275
-\FP@xib=\count276
-\FP@xfa=\count277
-\FP@xfb=\count278
-\FP@rega=\count279
-\FP@regb=\count280
-\FP@regs=\count281
-\FP@times=\count282
+\FP@xs=\count280
+\FP@xia=\count281
+\FP@xib=\count282
+\FP@xfa=\count283
+\FP@xfb=\count284
+\FP@rega=\count285
+\FP@regb=\count286
+\FP@regs=\count287
+\FP@times=\count288
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/fp/fp-addons.sty
 Package: fp-addons 1995/03/15
@@ -418,7 +542,7 @@ Package: fp-pas 1994/08/29
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/fp/fp-random.sty
 Package: fp-random 1995/02/23
-\FPseed=\count283
+\FPseed=\count289
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/fp/fp-eqn.sty
 Package: fp-eqn 1995/04/03
@@ -431,38 +555,71 @@ Package: fp-eval 1995/04/03
 ))
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count284
-\calc@Bcount=\count285
-\calc@Adimen=\dimen193
-\calc@Bdimen=\dimen194
-\calc@Askip=\skip57
-\calc@Bskip=\skip58
+\calc@Acount=\count290
+\calc@Bcount=\count291
+\calc@Adimen=\dimen258
+\calc@Bdimen=\dimen259
+\calc@Askip=\skip62
+\calc@Bskip=\skip63
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count286
-\calc@Cskip=\skip59
+\calc@Ccount=\count292
+\calc@Cskip=\skip64
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/tools/array.sty
 Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
-\col@sep=\dimen195
-\ar@mcellbox=\box48
-\extrarowheight=\dimen196
-\NC@list=\toks17
-\extratabsurround=\skip60
-\backup@length=\skip61
-\ar@cellbox=\box49
+\col@sep=\dimen260
+\ar@mcellbox=\box57
+\extrarowheight=\dimen261
+\NC@list=\toks18
+\extratabsurround=\skip65
+\backup@length=\skip66
+\ar@cellbox=\box58
 )
-\diagbox@boxa=\box50
-\diagbox@boxb=\box51
-\diagbox@boxm=\box52
-\diagbox@wd=\dimen197
-\diagbox@ht=\dimen198
-\diagbox@insepl=\dimen199
-\diagbox@insepr=\dimen256
-\diagbox@outsepl=\dimen257
-\diagbox@outsepr=\dimen258
+\diagbox@boxa=\box59
+\diagbox@boxb=\box60
+\diagbox@boxm=\box61
+\diagbox@wd=\dimen262
+\diagbox@ht=\dimen263
+\diagbox@insepl=\dimen264
+\diagbox@insepr=\dimen265
+\diagbox@outsepl=\dimen266
+\diagbox@outsepr=\dimen267
 )
-(d:/texlive/texlive/2019/texmf-dist/tex/latex/cite/cite.sty
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
+
+(d:/texlive/texlive/2019/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen268
+\captionmargin@=\dimen269
+\captionwidth=\dimen270
+\caption@tempdima=\dimen271
+\caption@indent=\dimen272
+\caption@parindent=\dimen273
+\caption@hangindent=\dimen274
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\ifx \@captype \@IEEEta
+blestring \footnotesize \bgroup \par \centering \@IEEEtabletopskipstrut {\norma
+lfont \sffamily \footnotesize #1}\\{\normalfont \sffamily \footnotesize #2}\par
+ \addvspace {0.5\baselineskip }\egroup \@IEEEtablecaptionsepspace \else \@IEEEf
+igurecaptionsepspace \setbox \@tempboxa \hbox {\normalfont \sffamily \footnotes
+ize {#1.}\nobreakspace #2}\ifdim \wd \@tempboxa >\hsize \setbox \@tempboxa \hbo
+x {\normalfont \sffamily \footnotesize {#1.}\nobreakspace }\parbox [t]{\hsize }
+{\normalfont \sffamily \footnotesize \noindent \unhbox \@tempboxa #2}\else \hbo
+x to\hsize {\normalfont \sffamily \footnotesize \box \@tempboxa \hfil }\fi \fi 
+.
+\c@caption@flags=\count293
+\c@ContinuedFloat=\count294
+) (d:/texlive/texlive/2019/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
@@ -477,12 +634,12 @@ Package graphics Info: Driver file: xetex.def on input line 99.
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
-\Gin@req@height=\dimen259
-\Gin@req@width=\dimen260
+\Gin@req@height=\dimen275
+\Gin@req@width=\dimen276
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2018/12/01 v2.17b AMS math features
-\@mathmargin=\skip62
+\@mathmargin=\skip67
 
 For additional information on amsmath, use the `?' option.
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -490,51 +647,51 @@ Package: amstext 2000/06/29 v2.01 AMS text
 
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks18
-\ex@=\dimen261
+\@emptytoks=\toks19
+\ex@=\dimen277
 ))
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen262
+\pmbraise@=\dimen278
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count287
+\inf@bad=\count295
 LaTeX Info: Redefining \frac on input line 223.
-\uproot@=\count288
-\leftroot@=\count289
+\uproot@=\count296
+\leftroot@=\count297
 LaTeX Info: Redefining \overline on input line 385.
-\classnum@=\count290
-\DOTSCASE@=\count291
+\classnum@=\count298
+\DOTSCASE@=\count299
 LaTeX Info: Redefining \ldots on input line 482.
 LaTeX Info: Redefining \dots on input line 485.
 LaTeX Info: Redefining \cdots on input line 606.
-\Mathstrutbox@=\box53
-\strutbox@=\box54
-\big@size=\dimen263
+\Mathstrutbox@=\box62
+\strutbox@=\box63
+\big@size=\dimen279
 LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
-\macc@depth=\count292
-\c@MaxMatrixCols=\count293
+\macc@depth=\count300
+\c@MaxMatrixCols=\count301
 \dotsspace@=\muskip17
-\c@parentequation=\count294
-\dspbrk@lvl=\count295
-\tag@help=\toks19
-\row@=\count296
-\column@=\count297
-\maxfields@=\count298
-\andhelp@=\toks20
-\eqnshift@=\dimen264
-\alignsep@=\dimen265
-\tagshift@=\dimen266
-\tagwidth@=\dimen267
-\totwidth@=\dimen268
-\lineht@=\dimen269
-\@envbody=\toks21
-\multlinegap=\skip63
-\multlinetaggap=\skip64
-\mathdisplay@stack=\toks22
+\c@parentequation=\count302
+\dspbrk@lvl=\count303
+\tag@help=\toks20
+\row@=\count304
+\column@=\count305
+\maxfields@=\count306
+\andhelp@=\toks21
+\eqnshift@=\dimen280
+\alignsep@=\dimen281
+\tagshift@=\dimen282
+\tagwidth@=\dimen283
+\totwidth@=\dimen284
+\lineht@=\dimen285
+\@envbody=\toks22
+\multlinegap=\skip68
+\multlinetaggap=\skip69
+\mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
 )
@@ -555,272 +712,222 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@ALC@unique=\count299
-\c@ALC@line=\count300
-\c@ALC@rem=\count301
-\c@ALC@depth=\count302
-\ALC@tlm=\skip65
-\algorithmicindent=\skip66
+\c@ALC@unique=\count307
+\c@ALC@line=\count308
+\c@ALC@rem=\count309
+\c@ALC@depth=\count310
+\ALC@tlm=\skip70
+\algorithmicindent=\skip71
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
-
-(d:/texlive/texlive/2019/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen270
-\captionmargin@=\dimen271
-\captionwidth=\dimen272
-\caption@tempdima=\dimen273
-\caption@indent=\dimen274
-\caption@parindent=\dimen275
-\caption@hangindent=\dimen276
-Package caption Info: Unknown document class (or package),
-(caption)             standard defaults will be used.
-)
-\c@KVtest=\count303
-\sf@farskip=\skip67
-\sf@captopadj=\dimen277
-\sf@capskip=\skip68
-\sf@nearskip=\skip69
-\c@subfigure=\count304
-\c@subfigure@save=\count305
-\c@lofdepth=\count306
-\c@subtable=\count307
-\c@subtable@save=\count308
-\c@lotdepth=\count309
-\sf@top=\skip70
-\sf@bottom=\skip71
+\c@KVtest=\count311
+\sf@farskip=\skip72
+\sf@captopadj=\dimen286
+\sf@capskip=\skip73
+\sf@nearskip=\skip74
+\c@subfigure=\count312
+\c@subfigure@save=\count313
+\c@lofdepth=\count314
+\c@subtable=\count315
+\c@subtable@save=\count316
+\c@lotdepth=\count317
+\sf@top=\skip75
+\sf@bottom=\skip76
 )
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-
-Package xeCJK Warning: Fandol is being set as the default font for CJK text.
-(xeCJK)                Please make sure it has been properly installed.
-
-
-Package fontspec Warning: Font "FandolSong-Regular" does not contain requested
-(fontspec)                Script "CJK".
-
-
-Package fontspec Info: Font family 'FandolSong-Regular(0)' created for font
-(fontspec)             'FandolSong-Regular' with options
-(fontspec)             [Script={CJK},Extension={.otf},BoldFont={FandolSong-Bold
-},ItalicFont={FandolKai-Regular}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolSong-Regular.otf]/OT"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->"[FandolSong-Bold.otf]/OT"
-(fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
-(fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->"[FandolKai-Regular.otf]/OT"
-(fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
-
-(./bare_adv.aux)
+) (./bare_adv.aux)
 \openout1 = `bare_adv.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 521.
-LaTeX Font Info:    ... okay on input line 521.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 521.
-LaTeX Font Info:    ... okay on input line 521.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 521.
-LaTeX Font Info:    ... okay on input line 521.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 521.
-LaTeX Font Info:    ... okay on input line 521.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 521.
-LaTeX Font Info:    ... okay on input line 521.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 521.
-LaTeX Font Info:    ... okay on input line 521.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 521.
-LaTeX Font Info:    ... okay on input line 521.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 522.
+LaTeX Font Info:    ... okay on input line 522.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 522.
+LaTeX Font Info:    ... okay on input line 522.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 522.
+LaTeX Font Info:    ... okay on input line 522.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 522.
+LaTeX Font Info:    ... okay on input line 522.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 522.
+LaTeX Font Info:    ... okay on input line 522.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 522.
+LaTeX Font Info:    ... okay on input line 522.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 522.
+LaTeX Font Info:    ... okay on input line 522.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 522.
+LaTeX Font Info:    ... okay on input line 522.
 
--- Lines per column: 61 (exact).
+-- Lines per column: 47 (approximate, difference = 2.31546pt).
+ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 522.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 521.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 521.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 521.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 521.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 521.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 521.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 521.
-LaTeX Font Info:    Redeclaring math accent \check on input line 521.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 521.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 521.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 521.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 521.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 521.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 522.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 522.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 522.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 522.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 522.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 522.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 522.
+LaTeX Font Info:    Redeclaring math accent \check on input line 522.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 522.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 522.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 522.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 522.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 522.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 521.
+(Font)              `operators' in the math version `normal' on input line 522.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 521.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 522.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 521.
+(Font)              `operators' in the math version `bold' on input line 522.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 521.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 522.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 521.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 522.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 521.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 522.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 521.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 522.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 521.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 522.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 521.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 522.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/bx/n on input line 521.
+(Font)                  TU/lmr/m/n --> TU/lmr/bx/n on input line 522.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/bx/it on input line 521.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/bx/it on input line 522.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 521.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 522.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 521.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 522.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
 
-Package fontspec Warning: Font "FandolHei-Regular" does not contain requested
-(fontspec)                Script "CJK".
+Package fontspec Info: Could not resolve font "Microsoft YaHei Bold/I" (it
+(fontspec)             probably doesn't exist).
 
 
-Package fontspec Info: Font family 'FandolHei-Regular(0)' created for font
-(fontspec)             'FandolHei-Regular' with options
-(fontspec)             [Script={CJK},Extension={.otf},BoldFont={FandolHei-Bold}
-].
+Package fontspec Info: Could not resolve font "Microsoft YaHei/I" (it probably
+(fontspec)             doesn't exist).
+
+
+Package fontspec Info: Font family 'MicrosoftYaHei(0)' created for font
+(fontspec)             'Microsoft YaHei' with options
+(fontspec)             [Script={CJK},BoldFont={* Bold}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Regular.otf]/OT"
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Microsoft
+(fontspec)             YaHei/OT:script=hani;language=DFLT;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (bx/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Bold.otf]/OT"
+(fontspec)             - 'bold' (bx/n) with NFSS spec.: <->"Microsoft YaHei
+(fontspec)             Bold/OT:script=hani;language=DFLT;"
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
+(fontspec)             - 'bold italic' (bx/it) with NFSS spec.: <->"Microsoft
+(fontspec)             YaHei/BI/OT:script=hani;language=DFLT;"
+(fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <11.04124> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 630.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 631.
+
+
+LaTeX Font Warning: Font shape `TU/MicrosoftYaHei(0)/m/it' undefined
+(Font)              using `TU/MicrosoftYaHei(0)/m/n' instead on input line 631.
+
+
 LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 63
-0.
-LaTeX Font Info:    Try loading font information for U+msa on input line 630.
+1.
+LaTeX Font Info:    Try loading font information for U+msa on input line 631.
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 630.
+LaTeX Font Info:    Try loading font information for U+msb on input line 631.
 
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+pzd on input line 630.
+LaTeX Font Info:    Try loading font information for U+pzd on input line 631.
 
 (d:/texlive/texlive/2019/texmf-dist/tex/latex/psnfss/upzd.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
 
 LaTeX Font Warning: Font shape `TU/lmss/bx/sc' undefined
-(Font)              using `TU/lmss/bx/n' instead on input line 657.
+(Font)              using `TU/lmss/bx/n' instead on input line 658.
 
 
-Underfull \hbox (badness 1484) in paragraph at lines 688--689
-[]\TU/lmr/m/n/9.53561 Scientific computing has become the third scientific
+LaTeX Font Warning: Font shape `TU/MicrosoftYaHei(0)/bx/sc' undefined
+(Font)              using `TU/MicrosoftYaHei(0)/bx/n' instead on input line 702
+.
+
+File: figure/fig1.png Graphic file (type bmp)
+<figure/fig1.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 717--718
+[]\TU/SimSun(0)/m/n/9.53561 为 了 理 解 \TU/lmr/m/n/9.53561 P-OPT \TU/SimSun(0)/m/n
+/9.53561 的 思 想，|  我 们 先 介 绍 \TU/lmr/m/n/9.53561 T-
  []
 
-File: figure/fig1.jpg Graphic file (type bmp)
-<figure/fig1.jpg>
-LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 715
-.
+
+Underfull \hbox (badness 5637) in paragraph at lines 717--718
+\TU/lmr/m/n/9.53561 OPT(Transposd-based Cache Replacement) \TU/SimSun(0)/m/n/9.
+53561 替 换 策 略，|
+ []
+
+File: figure/fig2.png Graphic file (type bmp)
+<figure/fig2.png>
 [1
 
 
 ]
-Overfull \hbox (6.21646pt too wide) in paragraph at lines 844--845
-[]\TU/lmr/m/n/9.53561 where $[][] \OT1/cmr/m/n/10 = []\OML/cmm/m/it/10 ^^[[]; [
-][] \OT1/cmr/m/n/10 =
- []
+LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 726
+.
+File: figure/fig3.png Graphic file (type bmp)
+<figure/fig3.png>
+File: figure/fig4.png Graphic file (type bmp)
+<figure/fig4.png>
+ [2]
+File: figure/fig5.png Graphic file (type bmp)
+<figure/fig5.png>
+ [3]
+File: figure/fig6.png Graphic file (type bmp)
+<figure/fig6.png>
+ [4]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[2]
-File: figure/fig2.png Graphic file (type bmp)
-<figure/fig2.png>
-
-Overfull \hbox (36.135pt too wide) in paragraph at lines 870--871
- [][] 
- []
-
-File: figure/fig31.png Graphic file (type bmp)
-<figure/fig31.png>
-File: figure/fig32.png Graphic file (type bmp)
-<figure/fig32.png>
-[3]
-File: figure/fig41.jpg Graphic file (type bmp)
-<figure/fig41.jpg>
-File: figure/fig42.jpg Graphic file (type bmp)
-<figure/fig42.jpg>
-LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 983.
-
-Overfull \hbox (4.74905pt too wide) in paragraph at lines 983--995
- [][] 
- []
-
-
-Underfull \hbox (badness 4886) in paragraph at lines 997--997
- \TU/lmss/bx/n/9.53561 3.3 the Initial Boundary Value Problem of One-
- []
-
-[4]
-File: figure/fig51.jpg Graphic file (type bmp)
-<figure/fig51.jpg>
-File: figure/fig52.jpg Graphic file (type bmp)
-<figure/fig52.jpg>
-
-Overfull \hbox (4.74905pt too wide) in paragraph at lines 1043--1054
- [][] 
- []
-
-
-Underfull \hbox (badness 2310) in paragraph at lines 1236--1239
-\TU/lmr/m/n/8.03 work for predictive turbulence modeling,” \TU/lmr/m/it/8.03 ar
-Xiv preprint
- []
-
-[5] (./bare_adv.aux)
+ [5]
+(./bare_adv.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 17690 strings out of 492922
- 378909 string characters out of 6133407
- 492267 words of memory out of 5000000
- 21508 multiletter control sequences out of 15000+600000
- 541768 words of font info for 132 fonts, out of 8000000 for 9000
+ 20259 strings out of 492922
+ 445815 string characters out of 6133407
+ 533723 words of memory out of 5000000
+ 23996 multiletter control sequences out of 15000+600000
+ 542671 words of font info for 136 fonts, out of 8000000 for 9000
  1351 hyphenation exceptions out of 8191
- 49i,15n,75p,1725b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 54i,5n,68p,449b,478s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on bare_adv.pdf (5 pages).
