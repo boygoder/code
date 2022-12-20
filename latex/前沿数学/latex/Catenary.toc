@@ -1,5 +1,4 @@
-\beamer@sectionintoc {1}{悬链线}{3}{0}{1}
-\beamer@sectionintoc {2}{拟合步骤}{4}{0}{2}
-\beamer@sectionintoc {3}{拟合问题}{9}{0}{3}
-\beamer@sectionintoc {4}{断点连接}{11}{0}{4}
-\beamer@subsectionintoc {4}{1}{$output\_results( )$}{15}{0}{4}
+\beamer@sectionintoc {1}{颜色转换}{3}{0}{1}
+\beamer@sectionintoc {2}{图像扭转}{6}{0}{2}
+\beamer@sectionintoc {3}{网格简化}{12}{0}{3}
+\beamer@sectionintoc {4}{边缘提取}{18}{0}{4}
